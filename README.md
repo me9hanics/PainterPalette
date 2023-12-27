@@ -1,7 +1,7 @@
 
 <div class="cell markdown">
 
-# PainterPalette dataset: The 
+# PainterPalette dataset: The richest public dataset for notable painters
 
 The aim of this project is to create a dataset of painters from datasets such as WikiArt and Art500k, combining features, extending missing data of painters via the Wikipedia API and make corrections/additions manually. <br>
 One long-term goal would be to create a JSON file that contains all combined hierarchically. For example, a level in the structure could be art movement, inside it, are artists with some base data like birthplace, year of birth and death and other geographical data, inside it are paintings with all contained data (even better would be including
