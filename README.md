@@ -7,7 +7,7 @@ The aim of this project is to create a dataset of painters from datasets such as
 One long-term goal would be to create a JSON file that contains all combined hierarchically. For example, a level in the structure could be art movement, inside it, are artists with some base data like birthplace, year of birth and death and other geographical data, inside it are paintings with all contained data (even better would be including
 eras of painters in their substructure, and inside them the paintings). Then we could use this to create a network of art movements, artists, and paintings.
 
-<u>**Final result: **</u> The final file is stored in the artists.csv file.
+**<u>Final result: </u>** The final file is stored in the _artists.csv_ file.
 
 NEXT STEPS:<br> -Add aliases for painters in
 Art500k datasets<br> -Combine the datasets in a broader way (with more artists, and aliases well handled)<br>
