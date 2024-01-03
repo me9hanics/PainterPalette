@@ -57,31 +57,6 @@ Load the cleaned paintings data
 
 </div>
 
-<div class="cell code" execution_count="3">
-
-``` python
-wa_paintings = pd.read_csv('datasets/wikiart_paintings_refined.csv')
-print("Length:", len(wa_paintings))
-wa_paintings.head() #Consider dropping style: "Unknown" 
-```
-
-<div class="output stream stdout">
-
-    Length: 175313
-
-</div>
-
-<div class="output execute_result" execution_count="3">
-
-              artist                           style               genre            movement                                               tags  
-    0  Andrei Rublev  Moscow school of icon painting  religious painting       0  Byzantine Art  ['Christianity', 'saints-and-apostles', 'angel...  
-    1  Andrei Rublev  Moscow school of icon painting  religious painting       1  Byzantine Art  ['Christianity', 'Old-Testament', 'Daniel', 'p...  
-    2  Andrei Rublev  Moscow school of icon painting           miniature       2  Byzantine Art  ['Christianity', 'saints-and-apostles', 'Khitr...  
-    3  Andrei Rublev  Moscow school of icon painting  religious painting       3  Byzantine Art  ['Christianity', 'saints-and-apostles', 'St.-L...  
-    4  Andrei Rublev  Moscow school of icon painting           miniature       4  Byzantine Art  ['Christianity', 'arts-and-crafts', 'saints-an... 
-
-</div>
-
 </div>
 
 <div class="cell markdown">
@@ -137,13 +112,6 @@ art500k = pd.read_csv('datasets/art500k_cleaned.csv')
 art500k[0:6]
 ```
 
-<div class="output stream stderr">
-
-    C:\Users\hanic\AppData\Local\Temp\ipykernel_18740\2660317568.py:1: DtypeWarning: Columns (2,4,5,6,8,9,11,13,14) have mixed types. Specify dtype option on import or set low_memory=False.
-      art500k = pd.read_csv('datasets/art500k_cleaned.csv')
-
-</div>
-
 <div class="output execute_result" execution_count="23">
 
            author_name                                      painting_name Genre      Style Nationality PaintingSchool ArtMovement           Date Influencedby        Influencedon  Tag Pupils                                         Location        Teachers FriendsandCoworkers      Teachers FriendsandCoworkers 
@@ -190,35 +158,6 @@ art500k_artists[0:10]
 There needs to be further work done as seen.
 
 </div>
-
-<div class="cell markdown">
-
-Second dataset: from Rasta <br>
-<https://github.com/nphilou/rasta/tree/d22b34d5ac1aee9c1f80b4a73ad6792fd465c605/data/art500k>
-
-</div>
-
-<div class="cell code" execution_count="31">
-
-``` python
-rasta = pd.read_table('datasets/originals/art500k_rasta370k.txt', header=0, engine='python', sep='\t|\s{4,}');
-rasta[0:5]
-```
-
-<div class="output stream stderr">
-
-    <>:1: SyntaxWarning: invalid escape sequence '\s'
-    <>:1: SyntaxWarning: invalid escape sequence '\s'
-    C:\Users\hanic\AppData\Local\Temp\ipykernel_18740\3524387221.py:1: SyntaxWarning: invalid escape sequence '\s'
-      rasta = pd.read_table('datasets/originals/art500k_rasta370k.txt', header=0, engine='python', sep='\t|\s{4,}');
-
-</div>
-
-</div>
-
-<div class="cell markdown">
-
-Every painting either has East or West origin (or not given).
 
 </div>
 
