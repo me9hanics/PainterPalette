@@ -40,15 +40,6 @@ We created our own dataset called Painter Palette: a dataset with around 2500 pa
 ## WikiArt data
 
 
-<div class="cell code" execution_count="21">
-
-``` python
-import pandas as pd
-import numpy as np
-```
-
-</div>
-
 </div>
 
 <div class="cell markdown">
@@ -59,13 +50,8 @@ Load the cleaned paintings data
 
 </div>
 
-<div class="cell markdown">
 
-Load the grouped data: artists grouped by style
-
-</div>
-
-<div class="cell code" execution_count="11">
+<div class="cell code" execution_count="10">
 
 ``` python
 import pandas as pd
@@ -74,6 +60,16 @@ url = "https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/
 artists = pd.read_csv(url)
 artists
 ```
+
+</div>
+
+<div class="cell markdown">
+
+Load the grouped data: artists grouped by style
+
+</div>
+
+<div class="cell code" execution_count="11">
 
 <div class="output stream stdout">
 
