@@ -68,9 +68,11 @@ Load the grouped data: artists grouped by style
 <div class="cell code" execution_count="11">
 
 ``` python
-wa_grouped = pd.read_csv('datasets/wikiart_artists_styles_grouped.csv')
-print("Length:", len(wa_grouped), "\n", "Number of groups with only 1 count:", len(wa_grouped[wa_grouped['count']==min(wa_grouped['count'])]))
-wa_grouped[wa_grouped['artist'].str.contains("Monet")].sort_values(by=['count'], ascending=False)
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/artists.csv"
+artists = pd.read_csv(url)
+artists
 ```
 
 <div class="output stream stdout">
