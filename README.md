@@ -48,9 +48,6 @@ Load the cleaned paintings data
 
 </div>
 
-</div>
-
-
 <div class="cell code" execution_count="10">
 
 ``` python
@@ -70,6 +67,10 @@ Load the grouped data: artists grouped by style
 </div>
 
 <div class="cell code" execution_count="11">
+
+wikiart_artists_styles = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists_styles_grouped.csv')
+
+</div>
 
 <div class="output stream stdout">
 
