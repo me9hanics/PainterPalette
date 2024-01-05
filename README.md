@@ -68,7 +68,9 @@ Load the grouped data: artists grouped by style
 
 <div class="cell code" execution_count="11">
 
+``` python
 wikiart_artists_styles = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists_styles_grouped.csv')
+```
 
 </div>
 
