@@ -22,13 +22,6 @@ Some visualizations:
 
 ![image](https://github.com/me9hanics/ArtProject/assets/82604073/fe2c11b3-0386-4655-857e-37e0632aa6d9) <br> **Figure 3:** Network based on the "InfluencedOn" attribute.
 
-![image](https://github.com/me9hanics/ArtProject/assets/82604073/e56890d3-95f0-4b34-899f-60d9d7500cc8) <br> **Figure 4:** The most common styles per country in the dataset.
-
-![image](https://github.com/me9hanics/ArtProject/assets/82604073/585fd608-79c3-4313-8eaf-5c6cc1ebb082) <br> **Figure 5:** Style and movement networks built on top of painters.
-
-![image](https://github.com/me9hanics/ArtProject/assets/82604073/9eb4be59-245d-4cdb-a210-7c6c5ada3c5b) <br> **Figure 6:** Similar network to the first one, here we can see the social contagion of style spread even without accounting for style when making connections.
-
-
 # Datasets:
 
 We created our own dataset called Painter Palette: a dataset with around 2500 painter instances (so far), data on their styles, movements, nationality, birthyear, first and last year of painting in the Art500k dataset, birthplace, places of their paintings, influences, friends and coworkers, teachers, pupils, painting school. It's created by assembling data from paintings from the Art500k dataset, and data from paintings from the WikiArt dataset, fetching birth data from Wikipedia plus some manual additions.
