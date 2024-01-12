@@ -1,8 +1,7 @@
 def combine_instances(df, primary_artist_name, secondary_artist_name):
-    #import sys
+    import sys
     import pandas as pd
-    if 're' not in sys.modules:
-        import re
+    import re
 
     df = df.copy()
     df1 = df[df['artist'] == primary_artist_name].reset_index(drop=True)
