@@ -17,18 +17,18 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
         column1_val = df1[column][0]
         column2_val = df2[column][0]
         if pd.isnull(column1_val):
-            df1[column][0] = column2_val
+            df1.loc[0, column] = column2_val
         else:
             values1 = [x for x in column1_val.split(",") if x != ""]
             values2 = [x for x in column2_val.split(",") if x != ""]
             values = list(set(values1 + values2))
-            df1[column][0] = ",".join(values)
+            df1.loc[0, column] = ",".join(values)
     
     for column in dict_like_columns:
         column1_val = df1[column][0]
         column2_val = df2[column][0]        
         if pd.isnull(df1[column][0]):
-            df1[column][0] = column2_val
+            df1.loc[0, column] = column2_val
         else:
             values1 = re.findall(r"{(.*?)}", column1_val)
             values2 = re.findall(r"{(.*?)}", column2_val)
@@ -42,19 +42,19 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
             for instance, count in tuples2:
                 if instance not in [x[0] for x in tuples1]:
                     tuples1.append((instance, count))
-            df1[column][0] = ",".join(["{" + ":".join(map(str, x)) + "}" for x in tuples1])
+            df1.loc[0, column] = ",".join(["{" + ":".join(map(str, x)) + "}" for x in tuples1])
 
     for column in years_columns:
         column1_val = df1[column][0]
         column2_val = df2[column][0]  
         if pd.isnull(df1[column][0]):
-            df1[column][0] = column2_val
+            df1.loc[0, column] = column2_val
             continue
         elif column == 'FirstYear':
-            df1[column][0] = min(column1_val, column2_val)
+            df1.loc[0, column] = min(column1_val, column2_val)
             continue
         elif column == 'LastYear':
-            df1[column][0] = max(column1_val, column2_val)
+            df1.loc[0, column] = max(column1_val, column2_val)
             continue
         else:
             values1 = [x for x in column1_val.split(",") if x != ""]
@@ -79,7 +79,7 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
             for instance2, minyear2, maxyear2 in tuples2:
                 if instance2 not in [x[0] for x in tuples1_copy]:
                     tuples1.append((instance2, minyear2, maxyear2))
-            df1[column][0] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
+            df1.loc[0, column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
 
     df = df[(df['artist'] != secondary_artist_name) & (df['artist'] != primary_artist_name)]
     df = pd.concat([df, df1], ignore_index=True)
