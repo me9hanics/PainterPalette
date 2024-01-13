@@ -1533,5 +1533,4 @@
     "Seoung Won Won": "Seoung Won Won",
     "In Kyum Kim": "In Kyum Kim",
     "Alfonso Michel": "Alfonso Michel",
-    "Marc Bohan": "Marc Bohan"
 }
