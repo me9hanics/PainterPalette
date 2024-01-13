@@ -11,7 +11,7 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
     years_columns = ['FirstYear','LastYear','PlacesYears','StylesYears']
 
     if pd.isnull(df1['Nationality'][0]):
-        df1['Nationality'][0] = df2['Nationality'][0]
+        df1.loc[0,'Nationality'] = df2['Nationality'][0] 
 
     for column in string_extend_columns:
         column1_val = df1[column][0]
@@ -56,7 +56,7 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
         elif column == 'LastYear':
             df1.loc[0, column] = max(column1_val, column2_val)
             continue
-        else:
+        else: #Should handle errors. But not important as of now
             values1 = [x for x in column1_val.split(",") if x != ""]
             values2 = [x for x in column2_val.split(",") if x != ""]
             things1 = [x.split(":")[0] if ":" in x else x for x in values1]
