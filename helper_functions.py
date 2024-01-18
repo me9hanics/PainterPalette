@@ -18,7 +18,7 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
         column2_val = df2[column][0]
         if pd.isnull(column1_val):
             df1.loc[0, column] = column2_val
-        else:
+        elif not pd.isnull(column2_val):
             values1 = [x for x in column1_val.split(",") if x != ""]
             values2 = [x for x in column2_val.split(",") if x != ""]
             values = list(set(values1 + values2))
@@ -29,7 +29,7 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
         column2_val = df2[column][0]        
         if pd.isnull(df1[column][0]):
             df1.loc[0, column] = column2_val
-        else:
+        elif not pd.isnull(df2[column][0]):
             values1 = re.findall(r"{(.*?)}", column1_val)
             values2 = re.findall(r"{(.*?)}", column2_val)
             tuples1 = [tuple(x.split(":")) for x in values1]
@@ -56,7 +56,7 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
         elif column == 'LastYear':
             df1.loc[0, column] = max(column1_val, column2_val)
             continue
-        else: #Should handle errors. But not important as of now
+        elif not pd.isnull(df2[column][0]): #Should handle errors. But not important as of now
             values1 = [x for x in column1_val.split(",") if x != ""]
             values2 = [x for x in column2_val.split(",") if x != ""]
             things1 = [x.split(":")[0] if ":" in x else x for x in values1]
