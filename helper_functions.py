@@ -1,4 +1,4 @@
-def combine_instances(df, primary_artist_name, secondary_artist_name):
+def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     import sys
     import pandas as pd
     import re
@@ -84,3 +84,68 @@ def combine_instances(df, primary_artist_name, secondary_artist_name):
     df = df[(df['artist'] != secondary_artist_name) & (df['artist'] != primary_artist_name)]
     df = pd.concat([df, df1], ignore_index=True)
     return df
+
+
+
+#Extract years from strings containing dates with RegEx
+def initial_art500k_years_extract(date_string):
+    import re
+    years = re.findall(r'\b\d{4}\b', str(date_string))  #finds 4-digit numbers
+    years_list = list(map(int, years))  #List of years, as ints
+    return years_list
+
+#Get the earliest and latest year for each artist (thus the interval)
+def initial_art500k_get_years_interval(years_list):
+    if len(years_list)>0:
+        return min(years_list), max(years_list)
+    return None, None #Just if the list is empty
+
+def initial_art500k_get_artist_geolocations(artist_rows):
+    import spacy
+    import numpy as np
+    nlp = spacy.load("en_core_web_sm") #Just English model. This may be a mistake, some locations may be from different languages
+    
+    geolocations = []
+    for location_string in artist_rows['Location']:
+        if location_string is np.nan:
+            continue
+        doc = nlp(location_string)
+        for ent in doc.ents:
+            if ent.label_ == 'GPE': #Geopolitical entity (locations)
+                geolocations.append(ent.text)
+    if geolocations == []:
+        return None
+
+    geolocations = list(set(geolocations)) #Duplicates are excluded with set()
+    return initial_art500k_get_geolocations_string(geolocations) #Could switch to dictstring version
+
+
+def initial_art500k_get_multiple_artists_geolocations(artist_rows):
+    from collections import Counter
+    import spacy
+    import numpy as np
+
+    nlp = spacy.load("en_core_web_sm")  # ust English. May be a mistake, some locations could be from different languages
+
+    geolocations = []
+    for location_string in artist_rows['Location']:
+        if location_string is np.nan:
+            continue
+        doc = nlp(location_string)
+        for ent in doc.ents:
+            if ent.label_ == 'GPE':  #Geopolitical entity (locations)
+                geolocations.append(ent.text)
+    if geolocations == []:
+        return None
+    location_counter = Counter(geolocations)
+    result_string = ",".join([f"{{{location}:{count}}}" for location, count in location_counter.items()])
+    return result_string
+
+
+def initial_art500k_get_geolocations_string(location_list): # Version A
+    return ', '.join(location_list)
+
+def initial_art500k_get_geolocations_dictstring(location_list):
+    from collections import Counter
+    location_counter = Counter(location_list)
+    return ', '.join([f'{{{key}:{value}}}' for key, value in location_counter.items()])
