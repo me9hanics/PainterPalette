@@ -1,3 +1,56 @@
+#The idea: if in certain columns (e.g. "Places") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
+def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
+    row2 = row.copy()
+    for i in range(len(columns)):
+        for exception in exceptions: #First, go through all exceptions
+            value = row[columns[i]]
+            if exception in value:
+                break #Inner loop break, but it is "global" (also breaks the outer loop), see below
+        else:#The else for the for loop: this is only ran, if the for loop was never broke. This includes if it is None
+        #See here for explanation: 
+        # https://stackoverflow.com/questions/189645/how-can-i-break-out-of-multiple-loops
+            for text in texts:
+                if text in value:
+                    if switch_function is None:
+                        print("Artist:", row['artist'], "Column:", columns[i], "contains text:", text) 
+                    else:
+                        try:
+                            row2 = switch_function(row2, columns[i], text)
+                        except:
+                            row2 = switch_function(row2, columns[i])
+
+            continue #Allows us to go to next column, withput breaking the outer loop
+        #We would only get here if we already had a break (at the inner loop break)
+        row2 = row #If the inner loop was broken, then the row is not changed
+        break 
+    return row2
+
+
+def switch_function_exclude_word(row_as_series, column_name, excluded_word):
+    import re
+    row = row_as_series.copy()
+    if column_name == "Places": 
+        row[column_name] = row_as_series[column_name].replace(f", {excluded_word}", "").replace(f" {excluded_word},","")
+        if row[column_name] == excluded_word:
+            row[column_name] = ""
+    if column_name == "PlacesYears":
+        expression = re.findall(fr"{excluded_word}:\d+-\d+|$", row_as_series[column_name])[0]
+        if expression != "":
+            row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",","")
+            if row[column_name] == expression:
+                row[column_name] = ""
+        else:
+            expression = re.findall(fr"{excluded_word}:|$", row_as_series[column_name])[0]
+            row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",", "")
+    if column_name == "PlacesCount":
+        expression = re.findall(fr"\{{{excluded_word}:\d+\}}", row_as_series[column_name])[0]
+        row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",","")
+        if row[column_name] == expression:
+            row[column_name] = ""
+    return row
+
+############################# Art500k functions #############################
+
 def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     import sys
     import pandas as pd
@@ -85,7 +138,7 @@ def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     df = pd.concat([df, df1], ignore_index=True)
     return df
 
-
+############################# Initial functions #############################
 
 #Extract years from strings containing dates with RegEx
 def initial_art500k_years_extract(date_string):
