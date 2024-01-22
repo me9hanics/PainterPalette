@@ -1,5 +1,5 @@
-#The idea: if in certain columns (e.g. "Places") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
+#The idea: if in certain columns (e.g. "Places") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
     row2 = row.copy()
     for i in range(len(columns)):
         for exception in exceptions: #First, go through all exceptions
