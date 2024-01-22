@@ -1,5 +1,8 @@
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
 #The idea: if in certain columns (e.g. "Places") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
+    if exceptions is None or not isinstance(exceptions, list): #To iterate over it
+        exceptions = []    
+    
     row2 = row.copy()
     for i in range(len(columns)):
         for exception in exceptions: #First, go through all exceptions
@@ -29,26 +32,31 @@ def row_contains_values_switch(row, columns, texts, exceptions=None, switch_func
 def switch_function_exclude_word(row_as_series, column_name, excluded_word):
     import re
     row = row_as_series.copy()
+
     if column_name not in ["Places", "PlacesYears", "PlacesCount"]:
         raise ValueError("Error: not yet implemented column")
+    if not isinstance(row_as_series['column_name'], str): #For example, if it is NaN (float)
+        return row
+
     if column_name == "Places": 
         row[column_name] = row_as_series[column_name].replace(f", {excluded_word}", "").replace(f" {excluded_word},","")
         if row[column_name] == excluded_word:
             row[column_name] = ""
     if column_name == "PlacesYears":
-        expression = re.findall(fr"{excluded_word}:\d+-\d+|$", row_as_series[column_name])[0]
+        expressions = re.findall(fr"{excluded_word}:\d+-\d+|$", row_as_series[column_name])
+        expression = expressions[0] if expressions != [] else ""
         if expression != "":
             row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",","")
             if row[column_name] == expression:
                 row[column_name] = ""
-        else:
-            expression = re.findall(fr"{excluded_word}:|$", row_as_series[column_name])[0]
-            row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",", "")
+
     if column_name == "PlacesCount":
-        expression = re.findall(fr"\{{{excluded_word}:\d+\}}", row_as_series[column_name])[0]
-        row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",","")
-        if row[column_name] == expression:
-            row[column_name] = ""
+        expressions = re.findall(fr"\{{{excluded_word}:\d+\}}", row_as_series[column_name])
+        expression = expressions[0] if expressions != [] else ""
+        if expression != "":
+            row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",","")
+            if row[column_name] == expression:
+                row[column_name] = ""
     return row
 
 ############################# Art500k functions #############################
