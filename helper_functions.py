@@ -29,6 +29,8 @@ def row_contains_values_switch(row, columns, texts, exceptions=None, switch_func
 def switch_function_exclude_word(row_as_series, column_name, excluded_word):
     import re
     row = row_as_series.copy()
+    if column_name not in ["Places", "PlacesYears", "PlacesCount"]:
+        raise ValueError("Error: not yet implemented column")
     if column_name == "Places": 
         row[column_name] = row_as_series[column_name].replace(f", {excluded_word}", "").replace(f" {excluded_word},","")
         if row[column_name] == excluded_word:
