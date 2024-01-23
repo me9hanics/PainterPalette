@@ -5,7 +5,7 @@ def row_contains_values_switch(row, columns, texts, exceptions=None, switch_func
         exceptions = []
     
     value = row[columns[0]]
-    if np.isnan(value): #If it is NaN, then we don't want to do anything
+    if (type(value)==float) and (np.isnan(value)): #If it is NaN, then we don't want to do anything
         return row
 
     row2 = row.copy()
