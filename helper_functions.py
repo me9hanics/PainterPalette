@@ -21,9 +21,9 @@ def row_contains_values_switch(row, columns, texts, exceptions=None, switch_func
                     if switch_function is None:
                         print("Artist:", row['artist'], "Column:", columns[i], "contains text:", text) 
                     else:
-                        try:
+                        if switch_function.__code__.co_argcount == 3: #Generated code
                             row2 = switch_function(row2, columns[i], text)
-                        except:
+                        else:
                             row2 = switch_function(row2, columns[i])
 
             continue #Allows us to go to next column, withput breaking the outer loop
@@ -39,7 +39,7 @@ def switch_function_exclude_word(row_as_series, column_name, excluded_word):
 
     if column_name not in ["Places", "PlacesYears", "PlacesCount"]:
         raise ValueError("Error: not yet implemented column")
-    if not isinstance(row_as_series['column_name'], str): #For example, if it is NaN (float)
+    if not isinstance(row_as_series[column_name], str): #For example, if it is NaN (float)
         return row
 
     if column_name == "Places": 
