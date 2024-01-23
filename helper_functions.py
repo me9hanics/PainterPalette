@@ -1,12 +1,16 @@
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
 #The idea: if in certain columns (e.g. "Places") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
+    import numpy as np #Can do an workaround to avoid this to save time
     if exceptions is None or not isinstance(exceptions, list): #To iterate over it
-        exceptions = []    
+        exceptions = []
     
+    value = row[columns[0]]
+    if np.isnan(value): #If it is NaN, then we don't want to do anything
+        return row
+
     row2 = row.copy()
     for i in range(len(columns)):
         for exception in exceptions: #First, go through all exceptions
-            value = row[columns[i]]
             if exception in value:
                 break #Inner loop break, but it is "global" (also breaks the outer loop), see below
         else:#The else for the for loop: this is only ran, if the for loop was never broke. This includes if it is None
