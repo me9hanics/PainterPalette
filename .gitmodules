@@ -1,0 +1,3 @@
+[submodule "sparql-wikidata-painter-info-gathering"]
+	path = sparql-wikidata-painter-info-gathering
+	url = https://github.com/me9hanics/sparql-wikidata-painter-info-gathering.git
