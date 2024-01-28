@@ -1,3 +1,20 @@
+def create_painter_dataset_from_mapping(mapping):
+    import pandas as pd
+
+    artists_A = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists.csv')
+    art500k_artists = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/art500k_artists.csv')
+    artists_c = pd.DataFrame()
+    for key, value in mapping.items():
+        wikiart_artist_df = artists_A[artists_A['artist'] == key]; art500k_artist_df = art500k_artists[art500k_artists['artist'] == value]
+        columns_list_W = artists_A.columns.tolist(); columns_list_A = art500k_artists.columns.tolist()[1:]
+        combined_df = pd.concat([wikiart_artist_df[columns_list_W].reset_index(), art500k_artist_df[columns_list_A].reset_index()],  axis=1).drop(columns=['index'])
+        artists_c = pd.concat([artists_c, combined_df], axis=0).reset_index(drop=True)
+    cols = artists_c.columns.tolist();
+    cols = cols[0:1]+cols[7:8]+cols[5:7]+cols[1:2]+cols[3:4]+cols[19:]+cols[2:3]+cols[9:10]+cols[4:5]+cols[15:19]+cols[8:9]+cols[10:15]
+    artists_c = artists_c[cols]
+    return artists_c
+
+
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
 #The idea: if in certain columns (e.g. "Places") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
     import numpy as np #Can do an workaround to avoid this to save time
