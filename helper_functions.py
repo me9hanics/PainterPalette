@@ -1,12 +1,14 @@
-def create_painter_dataset_from_mapping(mapping):
+def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df = None):
     import pandas as pd
 
-    artists_A = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists.csv')
-    art500k_artists = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/art500k_artists.csv')
+    if wikiart_df is None:
+        wikiart_df = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists.csv') 
+    if art500k_df is None:
+        art500k_df = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/art500k_artists.csv')
     artists_c = pd.DataFrame()
     for key, value in mapping.items():
-        wikiart_artist_df = artists_A[artists_A['artist'] == key]; art500k_artist_df = art500k_artists[art500k_artists['artist'] == value]
-        columns_list_W = artists_A.columns.tolist(); columns_list_A = art500k_artists.columns.tolist()[1:]
+        wikiart_artist_df = wikiart_df[wikiart_df['artist'] == key]; art500k_artist_df = art500k_df[art500k_df['artist'] == value]
+        columns_list_W = wikiart_df.columns.tolist(); columns_list_A = art500k_df.columns.tolist()[1:]
         combined_df = pd.concat([wikiart_artist_df[columns_list_W].reset_index(), art500k_artist_df[columns_list_A].reset_index()],  axis=1).drop(columns=['index'])
         artists_c = pd.concat([artists_c, combined_df], axis=0).reset_index(drop=True)
     cols = artists_c.columns.tolist();
