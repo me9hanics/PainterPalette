@@ -3,18 +3,19 @@
 
 # PainterPalette dataset: The (not so) soon-to-be richest public dataset for notable painters
 
-The aim of this project is to create a dataset of painters from datasets such as WikiArt and Art500k, combining features, extending missing data of painters via the Wikipedia API and make corrections/additions manually. <br>
+The aim of this project is to create a dataset of painters from datasets such as WikiArt and Art500k, combining features, extending missing data of painters via the Wikipedia API and make corrections/additions both automated and manually. <br>
 One long-term goal would be to create a JSON file that contains all combined hierarchically. For example, a level in the structure could be art movement, inside it, are artists with some base data like birthplace, year of birth and death and other geographical data, inside it are paintings with all contained data (even better would be including
 eras of painters in their substructure, and inside them the paintings). Then we could use this to create a network of art movements, artists, and paintings.
 
 **<u>Final result: </u>** The final file is stored in the _artists.csv_ file.
 
-NEXT STEPS:<br> -Add aliases for painters in
-Art500k datasets<br> -Combine the datasets in a broader way (with more artists, and aliases well handled)<br>
+NEXT STEPS:<br> -Find the aliases of painters in
+Art500k dataset (one painter, multiple instances with different names e.g. Rembrandt and Rembrandt van Rijn)<br>
+-Broader combination of datasets (handle aliases, add more painters to the final dataset)<br>
 
 We have created multiple networks of painters (based on being at the same places at the same time+nationality, additionally style similarity, or who influenced whom networks) in another project (see: [ArtProject](https://github.com/me9hanics/ArtProject/)). We also created a network of styles and movements.
 
-Some visualizations:
+Some visualizations using the dataset:
 
 ![image](https://github.com/me9hanics/ArtProject/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5)<br> **Figure 1:** Painters connected based on time and place (roughly if they painted at the same places at the same time), arranged in birth year order.
 
