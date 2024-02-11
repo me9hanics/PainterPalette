@@ -4,7 +4,7 @@
 # PainterPalette dataset: The (not so) soon-to-be richest public dataset for notable painters
 
 <div align="center">
-  <a href="[LICENSE](https://github.com/me9hanics/PainterPalette?tab=MIT-1-ov-file)">
+  <a href="https://github.com/me9hanics/PainterPalette?tab=MIT-1-ov-file">
     <img alt="MIT License" src="https://img.shields.io/badge/Code_License-MIT-f5de53?&color=f5de53">
   </a>
 </div>
