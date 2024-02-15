@@ -1,6 +1,11 @@
-def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df = None):
-    import pandas as pd
+import pandas as pd
+import numpy as np #Can do an workaround to avoid this to save time
+import sys
+import re
+import spacy
+from collections import Counter
 
+def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df = None):
     if wikiart_df is None:
         wikiart_df = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists.csv') 
     if art500k_df is None:
@@ -19,7 +24,6 @@ def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df =
 
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
 #The idea: if in certain columns (e.g. "Places", now "PaintingsExhibitedAt") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
-    import numpy as np #Can do an workaround to avoid this to save time
     if exceptions is None or not isinstance(exceptions, list): #To iterate over it
         exceptions = []
     
@@ -53,7 +57,6 @@ def row_contains_values_switch(row, columns, texts, exceptions=None, switch_func
 
 
 def switch_function_exclude_word(row_as_series, column_name, excluded_word):
-    import re
     row = row_as_series.copy()
 
     if column_name not in ["PaintingsExhibitedAt", "PaintingsExhibitedAtCount"]: #Used to be ["Places", "PlacesYears", "PlacesCount"]
@@ -85,9 +88,6 @@ def switch_function_exclude_word(row_as_series, column_name, excluded_word):
 ############################# Art500k functions #############################
 
 def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
-    import sys
-    import pandas as pd
-    import re
 
     df = df.copy()
     df1 = df[df['artist'] == primary_artist_name].reset_index(drop=True)
@@ -98,6 +98,10 @@ def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
 
     if pd.isnull(df1['Nationality'][0]):
         df1.loc[0,'Nationality'] = df2['Nationality'][0] 
+    if pd.isnull(df1['Contemporary'][0]):
+        df1.loc[0,'Contemporary'] = df2['Contemporary'][0]
+    if pd.isnull(df1['Type'][0]):
+        df1.loc[0,'Type'] = df2['Type'][0]
 
     for column in string_extend_columns:
         column1_val = df1[column][0]
@@ -171,14 +175,131 @@ def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     df = pd.concat([df, df1], ignore_index=True)
     return df
 
+
+def art500k_combine_instances_by_index(df, primary_artist_index, secondary_artist_index):
+    import sys
+    import pandas as pd
+    import re
+
+    df = df.copy()
+    df1 = df.loc[[primary_artist_index]].reset_index(drop=True)
+    df2 = df.loc[[secondary_artist_index]].reset_index(drop=True)
+    string_extend_columns = ['PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers','PaintingsExhibitedAt']
+    dict_like_columns = ['ArtMovement', 'StylesCount','PaintingsExhibitedAtCount']
+    years_columns = ['FirstYear','LastYear','StylesYears']
+
+    if pd.isnull(df1['Nationality'][0]):
+        df1.loc[0,'Nationality'] = df2['Nationality'][0]
+    if pd.isnull(df1['Contemporary'][0]):
+        df1.loc[0,'Contemporary'] = df2['Contemporary'][0]
+    if pd.isnull(df1['Type'][0]):
+        df1.loc[0,'Type'] = df2['Type'][0]
+
+    for column in string_extend_columns:
+        column1_val = df1[column][0]
+        column2_val = df2[column][0]
+        if pd.isnull(column1_val):
+            df1.loc[0, column] = column2_val
+        elif not pd.isnull(column2_val):
+            values1 = [x for x in column1_val.split(",") if x != ""]
+            values2 = [x for x in column2_val.split(",") if x != ""]
+            values = list(set(values1 + values2))
+            df1.loc[0, column] = ",".join(values)
+    
+    for column in dict_like_columns:
+        column1_val = df1[column][0]
+        column2_val = df2[column][0]        
+        if pd.isnull(df1[column][0]):
+            df1.loc[0, column] = column2_val
+        elif not pd.isnull(df2[column][0]):
+            values1 = re.findall(r"{(.*?)}", column1_val)
+            values2 = re.findall(r"{(.*?)}", column2_val)
+            tuples1 = [tuple(x.split(":")) for x in values1]
+            tuples2 = [tuple(x.split(":")) for x in values2]
+            for instance, count in tuples1:
+                index1 = tuples1.index((instance, count))
+                if instance in [x[0] for x in tuples2]:
+                    index2 = [x[0] for x in tuples2].index(instance)
+                    tuples1[index1] = (instance, int(count) + int(tuples2[index2][1]))
+            for instance, count in tuples2:
+                if instance not in [x[0] for x in tuples1]:
+                    tuples1.append((instance, count))
+            df1.loc[0, column] = ",".join(["{" + ":".join(map(str, x)) + "}" for x in tuples1])
+
+    for column in years_columns:
+        column1_val = df1[column][0]
+        column2_val = df2[column][0]  
+        if pd.isnull(df1[column][0]):
+            df1.loc[0, column] = column2_val
+            continue
+        elif column == 'FirstYear':
+            df1.loc[0, column] = min(column1_val, column2_val)
+            continue
+        elif column == 'LastYear':
+            df1.loc[0, column] = max(column1_val, column2_val)
+            continue
+        elif not pd.isnull(df2[column][0]): #Should handle errors. But not important as of now
+            values1 = [x for x in column1_val.split(",") if x != ""]
+            values2 = [x for x in column2_val.split(",") if x != ""]
+            things1 = [x.split(":")[0] if ":" in x else x for x in values1]
+            minyears1 = [int(x.split(":")[1].split("-")[0]) for x in values1 if ":" in x]
+            maxyears1 = [int(x.split(":")[1].split("-")[1]) for x in values1 if ":" in x]
+            things2 = [x.split(":")[0] for x in values2]
+            minyears2 = [int(x.split(":")[1].split("-")[0]) for x in values2]
+            maxyears2 = [int(x.split(":")[1].split("-")[1]) for x in values2]
+            tuples1 = list(zip(things1, minyears1, maxyears1))
+            tuples2 = list(zip(things2, minyears2, maxyears2))
+            for instance1, minyear1, maxyear1 in tuples1:
+                index1 = tuples1.index((instance1, minyear1, maxyear1))
+                if instance1 in [x[0] for x in tuples2]:
+                    index2 = [x[0] for x in tuples2].index(instance1)
+                    instance2, minyear2, maxyear2 = tuples2[index2]
+                    minyear = min(minyear1, minyear2)
+                    maxyear = max(maxyear1, maxyear2)
+                    tuples1[index1] = (instance1, minyear, maxyear)
+            tuples1_copy = tuples1.copy()
+            for instance2, minyear2, maxyear2 in tuples2:
+                if instance2 not in [x[0] for x in tuples1_copy]:
+                    tuples1.append((instance2, minyear2, maxyear2))
+            df1.loc[0, column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
+
+
+    df = df.drop([secondary_artist_index, primary_artist_index])
+    df = pd.concat([df, df1], ignore_index=False)
+    return df
+
+
+def art500k_combine_duplicate_name(df, name):
+    df2 = df.copy()
+    duplicates = df[df.duplicated(['artist'], keep=False)]
+    duplicates.sort_values(by=['artist'])
+    duplicates = duplicates[duplicates['artist'].str.contains(name)]
+    if len(duplicates) == 2:
+        primary_artist_index = duplicates.index[0]
+        secondary_artist_index = duplicates.index[1]
+        df2 = art500k_combine_instances_by_index(df2, primary_artist_index, secondary_artist_index)
+        df2 = df2.reset_index(drop=True)
+    if(len(duplicates) > 2):
+        print("More than 2 duplicates found, not implemented yet.")
+
+    return df2
+
+
+def art500k_combine_duplicates(df):
+    df2 = df.copy()
+    duplicated_names = df2[df2.duplicated(['artist'], keep=False)]['artist'].unique()
+    for name in duplicated_names:
+        df2 = art500k_combine_duplicate_name(df2, name)
+    return df2
+
 ############################# Initial functions #############################
 
 #Extract years from strings containing dates with RegEx
 def initial_art500k_years_extract(date_string):
-    import re
     years = re.findall(r'\b\d{4}\b', str(date_string))  #finds 4-digit numbers
     years_list = list(map(int, years))  #List of years, as ints
     return years_list
+
 
 #Get the earliest and latest year for each artist (thus the interval)
 def initial_art500k_get_years_interval(years_list):
@@ -186,9 +307,8 @@ def initial_art500k_get_years_interval(years_list):
         return min(years_list), max(years_list)
     return None, None #Just if the list is empty
 
+
 def initial_art500k_get_artist_geolocations(artist_rows):
-    import spacy
-    import numpy as np
     nlp = spacy.load("en_core_web_sm") #Just English model. This may be a mistake, some locations may be from different languages
     
     geolocations = []
@@ -207,10 +327,6 @@ def initial_art500k_get_artist_geolocations(artist_rows):
 
 
 def initial_art500k_get_multiple_artists_geolocations(artist_rows):
-    from collections import Counter
-    import spacy
-    import numpy as np
-
     nlp = spacy.load("en_core_web_sm")  # ust English. May be a mistake, some locations could be from different languages
 
     geolocations = []
@@ -230,6 +346,7 @@ def initial_art500k_get_multiple_artists_geolocations(artist_rows):
 
 def initial_art500k_get_geolocations_string(location_list): # Version A
     return ', '.join(location_list)
+
 
 def initial_art500k_get_geolocations_dictstring(location_list):
     from collections import Counter
