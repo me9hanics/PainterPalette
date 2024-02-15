@@ -18,7 +18,7 @@ def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df =
 
 
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
-#The idea: if in certain columns (e.g. "Places") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
+#The idea: if in certain columns (e.g. "Places", now "PaintingsExhibitedAt") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
     import numpy as np #Can do an workaround to avoid this to save time
     if exceptions is None or not isinstance(exceptions, list): #To iterate over it
         exceptions = []
@@ -56,24 +56,24 @@ def switch_function_exclude_word(row_as_series, column_name, excluded_word):
     import re
     row = row_as_series.copy()
 
-    if column_name not in ["Places", "PlacesYears", "PlacesCount"]:
+    if column_name not in ["PaintingsExhibitedAt", "PaintingsExhibitedAtCount"]: #Used to be ["Places", "PlacesYears", "PlacesCount"]
         raise ValueError("Error: not yet implemented column")
     if not isinstance(row_as_series[column_name], str): #For example, if it is NaN (float)
         return row
 
-    if column_name == "Places": 
+    if column_name == "PaintingsExhibitedAt": 
         row[column_name] = row_as_series[column_name].replace(f", {excluded_word}", "").replace(f" {excluded_word},","")
         if row[column_name] == excluded_word:
             row[column_name] = ""
-    if column_name == "PlacesYears":
-        expressions = re.findall(fr"{excluded_word}:\d+-\d+|$", row_as_series[column_name])
-        expression = expressions[0] if expressions != [] else ""
-        if expression != "":
-            row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",","")
-            if row[column_name] == expression:
-                row[column_name] = ""
+    #if column_name == "PlacesYears":
+    #    expressions = re.findall(fr"{excluded_word}:\d+-\d+|$", row_as_series[column_name])
+    #    expression = expressions[0] if expressions != [] else ""
+    #    if expression != "":
+    #        row[column_name] = row_as_series[column_name].replace(","+expression, "").replace(expression+",","")
+    #        if row[column_name] == expression:
+    #            row[column_name] = ""
 
-    if column_name == "PlacesCount":
+    if column_name == "PaintingsExhibitedAtCount":
         expressions = re.findall(fr"\{{{excluded_word}:\d+\}}", row_as_series[column_name])
         expression = expressions[0] if expressions != [] else ""
         if expression != "":
@@ -92,9 +92,9 @@ def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     df = df.copy()
     df1 = df[df['artist'] == primary_artist_name].reset_index(drop=True)
     df2 = df[df['artist'] == secondary_artist_name].reset_index(drop=True)
-    string_extend_columns = ['PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers','Places']
-    dict_like_columns = ['ArtMovement', 'StylesCount','PlacesCount']
-    years_columns = ['FirstYear','LastYear','PlacesYears','StylesYears']
+    string_extend_columns = ['PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers','PaintingsExhibitedAt']
+    dict_like_columns = ['ArtMovement', 'StylesCount','PaintingsExhibitedAtCount']
+    years_columns = ['FirstYear','LastYear','StylesYears']
 
     if pd.isnull(df1['Nationality'][0]):
         df1.loc[0,'Nationality'] = df2['Nationality'][0] 
