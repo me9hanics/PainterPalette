@@ -16,11 +16,16 @@ def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df =
         columns_list_W = wikiart_df.columns.tolist(); columns_list_A = art500k_df.columns.tolist()[1:]
         combined_df = pd.concat([wikiart_artist_df[columns_list_W].reset_index(), art500k_artist_df[columns_list_A].reset_index()],  axis=1).drop(columns=['index'])
         artists_c = pd.concat([artists_c, combined_df], axis=0).reset_index(drop=True)
-    cols = artists_c.columns.tolist();
-    cols = cols[0:1]+cols[7:8]+cols[5:7]+cols[1:2]+cols[3:4]+cols[19:]+cols[2:3]+cols[9:10]+cols[4:5]+cols[15:19]+cols[8:9]+cols[10:15]
+    #cols = artists_c.columns.tolist();
+    #cols = cols[0:1]+cols[7:8]+cols[5:7]+cols[1:2]+cols[3:4]+cols[19:]+cols[2:3]+cols[9:10]+cols[4:5]+cols[15:19]+cols[8:9]+cols[10:15]
+    cols = ["artist", "Nationality", "citizenship", 'gender', 'styles', 'movement', 'ArtMovement', 'birth_place','death_place',
+            'birth_year', 'death_year', 'FirstYear', 'LastYear', 'pictures_count', 'locations','locations_with_years',
+            'styles_extended', 'StylesCount', 'StylesYears', 'occupations',  'PaintingsExhibitedAt', 'PaintingsExhibitedAtCount',
+             'PaintingSchool', 'Influencedby', 'Influencedon', 'Pupils', 'Teachers','FriendsandCoworkers','Contemporary'
+            ] #Skipped:  'Type',
     artists_c = artists_c[cols]
+    artists_c = artists_c.rename(columns={"pictures_count": "wikiart_pictures_count", 'ArtMovement': "Art500k_Movements"})
     return artists_c
-
 
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
 #The idea: if in certain columns (e.g. "Places", now "PaintingsExhibitedAt") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
