@@ -178,7 +178,7 @@ smaller dataset: <https://snap.stanford.edu/data/wikispeedia.html>
 ### Philosophy
 
 
-**Philosopher's web**: Only available after paying 10$ for pro user
+**Philosopher's web**: Only available after paying 10$ for pro user<br>
 **Philosophy NLP data**: https://philosophydata.com/phil_nlp.zip
 
 
