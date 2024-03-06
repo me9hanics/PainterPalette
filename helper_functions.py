@@ -90,6 +90,13 @@ def switch_function_exclude_word(row_as_series, column_name, excluded_word):
                 row[column_name] = ""
     return row
 
+
+def check_if_nan(entity):
+    if type(entity) == float:
+        if np.isnan(entity):
+            return True
+    return False
+
 ############################# Art500k functions #############################
 
 def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
