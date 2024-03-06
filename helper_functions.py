@@ -189,10 +189,6 @@ def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
 
 
 def art500k_combine_instances_by_index(df, primary_artist_index, secondary_artist_index):
-    import sys
-    import pandas as pd
-    import re
-
     df = df.copy()
     df1 = df.loc[[primary_artist_index]].reset_index(drop=True)
     df2 = df.loc[[secondary_artist_index]].reset_index(drop=True)
@@ -361,6 +357,5 @@ def initial_art500k_get_geolocations_string(location_list): # Version A
 
 
 def initial_art500k_get_geolocations_dictstring(location_list):
-    from collections import Counter
     location_counter = Counter(location_list)
     return ', '.join([f'{{{key}:{value}}}' for key, value in location_counter.items()])
