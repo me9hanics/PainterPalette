@@ -359,3 +359,36 @@ def initial_art500k_get_geolocations_string(location_list): # Version A
 def initial_art500k_get_geolocations_dictstring(location_list):
     location_counter = Counter(location_list)
     return ', '.join([f'{{{key}:{value}}}' for key, value in location_counter.items()])
+
+
+############################# Similarity functions #############################
+
+def similarity(s1, s2):
+    import difflib #Import here, because it is only used here
+    return difflib.SequenceMatcher(None, s1, s2).ratio()
+
+
+def similarity_difference(s1, s2):
+    return (1 - similarity(s1, s2))*len(s1)
+
+
+def character_difference_naive(a, b, similarity_score):
+    #Usually, similarity_score comes from similarity
+    return similarity_score*len(a)
+
+
+def similarity_character_difference_operations(s1,s2):
+    import difflib #Import here, because it is only used here
+    sequence_match = difflib.SequenceMatcher(None, s1, s2)
+    similarity = sequence_match.ratio()
+    character_difference = 0
+    steps = 0
+    for opcode in sequence_match.get_opcodes():
+        if opcode[0] in ['replace', 'delete']:
+            character_difference += opcode[2] - opcode[1]
+            steps += 1
+        if opcode[0]=='insert':
+            character_difference += opcode[4] - opcode[3]
+            steps += 1
+
+    return similarity, character_difference, steps
