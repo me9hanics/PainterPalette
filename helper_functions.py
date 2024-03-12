@@ -392,3 +392,29 @@ def similarity_character_difference_operations(s1,s2):
             steps += 1
 
     return similarity, character_difference, steps
+
+
+def calculate_similarities_df(artists_X, artists_Y):
+    sims_df = pd.DataFrame(columns=['artist (original)','"Best" pair','Similarity', 'Character difference', 'Operations to transform'])
+    artists_X_copy = artists_X.copy()
+    artists_Y_copy = artists_Y.copy()
+    if type(artists_X) == pd.core.frame.DataFrame:
+        artists_X_copy = artists_X_copy['artist']
+    if type(artists_Y) == pd.core.frame.DataFrame:
+            artists_Y_copy = artists_Y_copy['artist']
+
+    for painter in artists_X:
+        all_sims = []
+        max_sim = 0
+        for comparison_artist in artists_Y:
+            (similarity_score,char_diff, operation_count) = similarity_character_difference_operations(painter, comparison_artist)
+            if similarity_score >= max_sim: #Runtime reasons
+                max_sim = similarity_score
+                all_sims.append((similarity_score,char_diff, operation_count ,comparison_artist))
+        final_maximum = max(sims[0] for sims in all_sims) 
+        for sims in all_sims:
+            if sims[0] == final_maximum: #Just take the highest ones
+                sims_df = pd.concat([sims_df, pd.DataFrame([[painter, sims[3], sims[0], sims[1], sims[2]]], columns=['artist (original)','"Best" pair','Similarity', 'Character difference', 'Operations to transform'])])
+
+    sims_df = (sims_df.sort_values(by=['Similarity'], ascending=False)).reset_index(drop=True)
+    return sims_df
