@@ -1,0 +1,39 @@
+artist (original),"""Best"" pair",Similarity,Character difference,Operations to transform
+Paul Richard,Paul Richards,0.96,1,1
+Hiroshige II,Hiroshige III,0.96,1,1
+Pieter Nagel,Peter Nagel,0.9565217391304348,1,1
+Lucy Barker,Lucy Baker,0.9523809523809523,1,1
+Ian Swift,Ivan Swift,0.9473684210526315,1,1
+Jan Brown,Joan Brown,0.9473684210526315,1,1
+Monogrammist CL,Monogrammist CG,0.9333333333333333,1,1
+Monogrammist MS,Monogrammist IS,0.9333333333333333,1,1
+Liu Ding,Liu Jing,0.875,1,1
+Gao Feng,Guo Feng,0.875,1,1
+Josef Urban,Josef Urbach,0.8695652173913043,1,1
+Conrad Meit,Conrad Meili,0.8695652173913043,1,1
+Willie Cole,William Cole,0.8695652173913043,1,1
+Franz Russ,Franz Riess,0.8571428571428571,1,1
+Dei,Demi,0.8571428571428571,1,1
+Graham Hay,Graham Hall,0.8571428571428571,1,1
+Dano,Dao,0.8571428571428571,1,1
+Franz Russ,Franz Gruss,0.8571428571428571,1,1
+John Dolan,John Dorman,0.8571428571428571,1,1
+Boe,Bone,0.8571428571428571,1,1
+Jansson,Janszon,0.8571428571428571,1,1
+Wia,Wiaz,0.8571428571428571,1,1
+Shem,Sem,0.8571428571428571,1,1
+Nio,Nico,0.8571428571428571,1,1
+San,Sana,0.8571428571428571,1,1
+Ano,Anko,0.8571428571428571,1,1
+Zoid,Zid,0.8571428571428571,1,1
+Man,Mani,0.8571428571428571,1,1
+Mes,Maes,0.8571428571428571,1,1
+Paul Hardy,Paul Harvey,0.8571428571428571,1,1
+Zhang Dali,Zhang Dunli,0.8571428571428571,1,1
+Zurbarán,Juan de Zurbarán,0.6666666666666666,8,1
+Pierre Etienne Théodore Rousseau,Théodore Rousseau,0.6938775510204082,15,1
+Frank Buffalo Hyde,Frank Hyde,0.7142857142857143,8,1
+Magdalina Konstantinovna Mavrovskaya,Magdalina Mavrovskaya,0.7368421052631579,15,1
+Jean Alexandre Coraboeuf,Jean Coraboeuf,0.7368421052631579,10,1
+Meneses Osorio,Francisco Meneses Osorio,0.7368421052631579,10,1
+Vasily Semyonovich Bogatyryov,Vasily Bogatyryov,0.7391304347826086,12,1
