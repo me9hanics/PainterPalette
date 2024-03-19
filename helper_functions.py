@@ -5,6 +5,19 @@ import re
 import spacy
 from collections import Counter
 
+def create_painter_palette(wikiart_artists, art500k_artists, wikiart_art500k_mapping, art500k_further_selected_df):
+    mapping_keys = list(wikiart_art500k_mapping.keys())
+    #WikiArt + Art500k combination
+    artists_c = create_painter_dataset_from_mapping(wikiart_art500k_mapping, wikiart_artists, art500k_artists)
+    #Further WikiArt artists
+    additional_artists_wikiart = wikiart_artists[~(wikiart_artists['artist'].isin(mapping_keys))].copy()
+    additional_artists_wikiart.rename(columns={'pictures_count':'wikiart_pictures_count'}, inplace=True)
+    artists = pd.concat([artists_c, additional_artists_wikiart], ignore_index=True)
+    #Further Art500k artists
+    additional_artists_art500k = (art500k_further_selected_df.copy()).rename(columns={'birth_date':'birth_year', 'death_date':'death_year'})
+    artists = pd.concat([artists, additional_artists_art500k], ignore_index=True)
+    return artists
+
 def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df = None):
     if wikiart_df is None:
         wikiart_df = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists.csv') 
