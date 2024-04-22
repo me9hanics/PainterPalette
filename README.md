@@ -13,14 +13,16 @@
 
 ## Introduction
 
-The aim of this project is to create a dataset of painters from sources such as WikiArt and Art500k, combining features, substituting missing data of painters via the Wikipedia API and make corrections/additions both automated and manually.
+The aim of this project is to create a dataset of painters from sources such as WikiArt and Art500k, combining features, substituting missing data of painters via the Wikipedia API and make corrections/additions both automated and manually. After finding mappings between painters in the two sources + Wikidata, the dataset includes around ***10000 painters*** with many attributes.
 
-This includes:
-- Bio data of a painter
+Currently, the dataset includes:
+- Bio data: Nationality/citizenship, name, birth and death years and places, gender
 - Artistic style data
 - Locations of activity (sometimes with years)
-- Influences (painters on other painters)
-- Quantities of paintings, styles, etc.
+- Occupations (e.g. painter, sculptor, litographer, etc.)
+- Influences: on painters, and from painters, pupils, teachers
+- Friends, coworkers (limited data)
+- Quantities of paintings, in styles, etc.
 
 The dataset is intended to be used for various purposes, including data analysis, machine learning, and visualization projects.<br>
 One long-term goal would be to create a JSON file that contains all combined hierarchically. A level in the structure could be art movement, inside it, are artists with some base bio data, an even lower layer could be the paintings of the painter (even better could be eras of painters in their substructure, and inside them the paintings).
@@ -29,6 +31,19 @@ We have created multiple networks of painters (based on being at the same places
 
 ### Resulting file
 The final dataset is stored in the *artists.csv* file (raw file here: [raw](https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/artists.csv), often this is better import / look at as it doesn't have the commit ID in the URL so this gives back always the freshest version).
+
+Some of the first instances in the file:
+
+| artist | Nationality | citizenship | gender | styles | movement | Art500k_Movements | birth_place | death_place | birth_year | death_year | FirstYear | LastYear | wikiart_pictures_count | locations | locations_with_years | styles_extended | StylesCount | StylesYears | occupations | PaintingsExhibitedAt | PaintingsExhibitedAtCount | PaintingSchool | Influencedby | Influencedon | Pupils | Teachers | FriendsandCoworkers | Contemporary | ArtMovement | Type |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Bracha L. Ettinger | French,Jewish,Israeli | Israel | female | New European Painting | New European Painting | {New European Painting:21} | Tel Aviv | NaN | 1948 | NaN | 1991 | 2009 | 21 | [] | [] | {New European Painting:21} | {New European Painting:21} | New European Painting:1991-2009 | philosopher, psychoanalyst, painter, photographer | NaN | NaN | NaN | NaN | NaN | NaN | NaN | Yes | NaN | NaN |
+| Friedrich Schroder-Sonnenstern | German | Germany | male | Art Brut | Outsider art (Art brut) | {Outsider art (Art brut):10} | Sovetsk | Berlin | 1892 | 1982 | 1948 | 1965 | 10 | ['Berlin'] | ['Berlin:1949-1982'] | {Art Brut:10} | {Art Brut:10} | Art Brut:1948-1965 | painter, drawer | NaN | NaN | NaN | NaN | NaN | NaN | NaN | No | NaN | NaN |
+| Nuno Gonçalves | Portuguese | Kingdom of Portugal | male | Early Renaissance | Early Renaissance | {Early Renaissance:10} | NaN | NaN | 1425 | 1492 | 1450 | 1490 | 10 | [] | [] | {Early Renaissance:10} | {Early Renaissance:10} | Early Renaissance:1450-1490 | portraitist, painter, musician, researcher | Lisbon, Portugal | {Lisbon:1},{Portugal:1} | NaN | National Museum of Ancient Art (MNAA), Lisbon,... | NaN | NaN | NaN | NaN | No | NaN | NaN |
+| Jose Ferraz de Almeida Junior | Brazilian | Brazil | male | Academicism, Realism | Realism | {Realism:64} | Itu | Piracicaba | 1850 | 1899 | 1850 | 1899 | 65 | [] | [] | {Academicism:13},{Realism:52} | {Realism:51}, {Academicism:15} | Realism:1850-1899,Academicism:1850-1895 | painter | Brazil, Rio de Janeiro, Sao Paulo | {Sao Paulo:30},{Brazil:36},{Rio de Janeiro:4} | NaN | NaN | NaN | NaN | NaN | NaN | No | NaN | NaN |
+| Frank W. Benson | American | United States of America | male | Impressionism, Naturalism, Realism | Impressionism | {Impressionism:103} | San Jose | Redlands | 1858 | 1911 | 1884 | 1924 | 103 | [] | [] | {Impressionism:66},{Naturalism:5},{Realism:32} | {Realism:48}, {Naturalism:5}, {Impressionism:68} | Realism:1884-1922,Naturalism:1895-1924,Impress... | lawyer, politician, painter, graphic artist | US, Chicago, Washington DC, IL, NY, New York City | {Chicago:1},{IL:1},{US:4},{New York City:1},{N... | Ten (Ten American Painters) | Johannes Vermeer,Diego Velazquez,Claude Monet,... | NaN | NaN | NaN | Edmund Charles Tarbell,Robert Lewis Reid,Abbot... | No | NaN | NaN |
+| Maria Helena Vieira da Silva | French,Portuguese | Portugal | female | Abstract Art, Expressionism, Surrealism, Tachi... | Abstract Art | {Abstract Art:38} | Lisbon | Paris | 1908 | 1992 | 1932 | 1995 | 38 | [] | [] | {Abstract Art:5},{Expressionism:5},{Surrealism... | {Cubism:2}, {Expressionism:8}, {Surrealism:9},... | Cubism:1932-1932,Expressionism:1932-1942,Surre... | artist, painter, graphic artist, stained-glass... | Lisbon, Portugal | {Lisbon:1},{Portugal:1} | NaN | NaN | NaN | NaN | NaN | NaN | NaN | NaN | NaN |
+| Jean-Baptiste-Simeon Chardin | NaN | France | male | Baroque, Rococo | Baroque | {Realism:1} | Paris | Paris | 1699 | 1779 | 1728 | 1753 | 79 | ['Paris'] | [] | {Baroque:17},{Rococo:62} | NaN | NaN | painter, visual artist | NaN | NaN | NaN | NaN | NaN | NaN | NaN | NaN | No | NaN | NaN |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Work in progress:
 - Find the aliases of painters in Art500k dataset (one painter, multiple instances with different names e.g., Rembrandt and Rembrandt van Rijn); currently the methods are being developed and discussed (the two highest candidate methods are finding aliases through Wikipedia and Wikidata, and using a word embedding to find the very similar names).
@@ -39,7 +54,7 @@ The final dataset is stored in the *artists.csv* file (raw file here: [raw](http
 
 <div align="center">
   <img src="https://github.com/me9hanics/ArtProject/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5" width=90% alt="Time-and-place network" >
-  <br> <b>Figure 1:</b> Painters connected based on time and place (roughly if they painted at the same places at the same time), arranged in birth year order. The color of the nodes represents the movement most common in the painter's styles.
+  <br> <b>Figure 1:</b> Painters connected based on time and place (roughly if they painted at the same places at the same time), arranged in birth year order. The color of the nodes represents the movement most common in the painter's styles. An updated, more accurate and larger version of this network is visualized <a href="https://raw.githubusercontent.com/me9hanics/ArtProject/main/analysis/images/3000_painters_connected_by_locations_communities_2.png">here</a>, but not ordered by time, unlike above.
 </div>
 
 <div align="center">
@@ -49,7 +64,7 @@ The final dataset is stored in the *artists.csv* file (raw file here: [raw](http
 
 <div align="center">
   <img src="https://github.com/me9hanics/ArtProject/assets/82604073/fe2c11b3-0386-4655-857e-37e0632aa6d9" width=55% alt="Painter influence network" >
-  <br> <b>Figure 3:</b> Network of painters based on who influenced whom.
+  <br> <b>Figure 3:</b> Simple network of some painters based on who influenced whom.
 </div> 
 
 
