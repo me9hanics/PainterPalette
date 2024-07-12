@@ -15,8 +15,8 @@
 
 The aim of this project is to create a dataset of painters from sources such as WikiArt and Art500k, combining features, substituting missing data of painters via the Wikipedia API and make corrections/additions both automated and manually. After finding mappings between painters in the two sources + Wikidata, the dataset includes around ***10000 painters*** with many attributes.
 
-Currently, the dataset includes:
-- Bio data: Nationality/citizenship, name, birth and death years and places, gender
+Currently, the dataset includes ***29 attributes***:
+- Biography data: Nationality/citizenship, name, birth and death years and places, gender
 - Artistic style data
 - Locations of activity (sometimes with years)
 - Occupations (e.g. painter, sculptor, litographer, etc.)
@@ -29,8 +29,13 @@ One long-term goal would be to create a JSON file that contains all combined hie
 
 We have created multiple networks of painters (based on being at the same places at the same time + nationality, additionally style similarity, or who influenced whom networks) in another project (see: [ArtProject](https://github.com/me9hanics/ArtProject/)). A network of styles and movements were also created.
 
-### Resulting file
-The final dataset is stored in the *artists.csv* file (raw file here: [raw](https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/artists.csv), often this is better import / look at as it doesn't have the commit ID in the URL so this gives back always the freshest version).
+### Resulting dataset/file
+
+Download version *1.0.1* as a *CSV* file [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv)
+
+**Soon Excel file format included too**
+
+In any case, the final ("compiled") dataset is stored in the *artists.csv* file (raw file here: [raw](https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/artists.csv), often this is better import / look at as it doesn't have the commit ID in the URL so this gives back always the freshest version).
 
 Some of the first instances in the file:
 
