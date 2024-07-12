@@ -31,7 +31,7 @@ We have created multiple networks of painters (based on being at the same places
 
 ### Resulting dataset/file
 
-Download version *1.0.1* as a *CSV* file [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv)
+#### Download version *1.0.1* as a *CSV* file [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv)
 
 **Soon Excel file format included too**
 
