@@ -11,7 +11,7 @@
 </div>
 <hr>
 
-<h2><a href="https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv">Download Here</a></h2>
+<h2><a href="https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv">Download Here (CSV)</a></h2>
 
 ## Introduction
 
@@ -33,9 +33,10 @@ We have created multiple networks of painters (based on being at the same places
 
 ### Resulting dataset/file
 
-#### Download version *1.0.1* as a *CSV* file [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv)
-
-**Soon Excel file format included too**
+#### Download the latest version (*1.0.1*) [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv)
+- [CSV](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv)
+- [SQL](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.sql)
+- [Excel](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.xlsx)
 
 In any case, the final ("compiled") dataset is stored in the *artists.csv* file (raw file here: [raw](https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/artists.csv), often this is better import / look at as it doesn't have the commit ID in the URL so this gives back always the freshest version).<br>
 
