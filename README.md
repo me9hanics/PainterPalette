@@ -1,10 +1,15 @@
-# PainterPalette dataset: The (not so) soon-to-be richest public dataset of painters
+[![website-img]][website link]
+[![website-project-img]][website-project link]
+[![mit-license-img]][mit-license-link]
 
-<div align="center">
-  <a href="https://github.com/me9hanics/PainterPalette?tab=MIT-1-ov-file">
-    <img alt="MIT License" src="https://img.shields.io/badge/Code_License-MIT-f5de53?&color=f5de53">
-  </a>
-</div>
+[website-img]: https://img.shields.io/badge/Website-me9hanics.github.io-blue?style=flat-square
+[website link]: https://me9hanics.github.io/
+[website-project-img]: https://img.shields.io/badge/Project_subpage-grey?style=flat-square
+[website-project link]: https://me9hanics.github.io/projects/painterpalette.html
+[mit-license-img]: https://img.shields.io/badge/Code_License-MIT-f5de53?&color=f5de53
+[mit-license-link]: https://github.com/me9hanics/PainterPalette?tab=MIT-1-ov-file
+
+# PainterPalette dataset: The (not so) soon-to-be richest public dataset of painters
 
 <div align="center">
   <img src="https://github.com/me9hanics/ArtProject/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5" width=70% alt="Painter Network">
@@ -66,7 +71,12 @@ These were taken from [ArtProject](https://github.com/me9hanics/ArtProject/).
 
 <div align="center">
   <img src="https://github.com/me9hanics/ArtProject/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5" width=90% alt="Time-and-place network" >
-  <br> <b>Figure 1:</b> Painters connected based on time and place (roughly if they painted at the same places at the same time), arranged in birth year order. The color of the nodes represents the movement most common in the painter's styles. An updated, more accurate and larger version of this network is visualized <a href="https://raw.githubusercontent.com/me9hanics/ArtProject/main/analysis/images/3000_painters_connected_by_locations_communities_2.png">here</a>, but not ordered by time, unlike above.
+  <br> <b>Figure 1:</b> Painters connected based on time and place (roughly if they painted at the same places at the same time), arranged in birth year order. The color of the nodes represents the movement most common in the painter's styles. An updated, more accurate and larger version of this network is visualized below, but not ordered by time, unlike above.<br>
+</div>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/me9hanics/ArtProject/main/analysis/images/3000_painters_connected_by_locations_communities_2.png" width=90% alt="Large connected network network" >
+  <br> <b>Figure 1b:</b> Painters connected based on time and place + post filtering, arranged in birth year order but not ordered by time. Out of >10000 painters in the dataset, around 3000 had enough connections, these were chosen and their network was visualized.<br>
 </div>
 
 <div align="center">
