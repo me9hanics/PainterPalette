@@ -18,6 +18,8 @@
 
 <h2><a href="https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv">Download Here (CSV)</a></h2>
 
+If you are looking for connecting the painters into a network, the **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** project **connected painters** based on **co-exhibitions** and analyzed the network afterwards. **[ArtProject](https://github.com/me9hanics/ArtProject/)** has other networks of the painters (and styles) too, e.g. based on **time and place**.
+
 ## Introduction
 
 The aim of this project is to create a dataset of painters from sources such as WikiArt and Art500k, combining features, substituting missing data of painters via the Wikipedia API and make corrections/additions both automated and manually. After finding mappings between painters in the two sources + Wikidata, the dataset includes around ***10000 painters*** with many attributes.
