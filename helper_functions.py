@@ -121,7 +121,7 @@ def combine_list_like_str_columns(df1, df2, columns, indices=[0,0]):
             values1 = re.findall(r"'(.*?)'", column1_val)
             values2 = re.findall(r"'(.*?)'", column2_val)
             values = list(set(values1 + values2))
-            df1.loc[indices[0], column] = ",".join([f"'{x}'" for x in values])
+            df1.loc[indices[0], column] = "["+",".join([f"'{x}'" for x in values])+"]"
     return df1
 
 def combine_string_extend_columns(df1, df2, columns, indices=[0,0]):
@@ -159,30 +159,43 @@ def combine_dict_like_columns(df1, df2, columns, indices=[0,0]):
             df1.loc[indices[0], column] = ",".join(["{" + ":".join(map(str, x)) + "}" for x in tuples1])
     return df1
 
-def combine_years_columns(df1, df2, columns, indices=[0,0]):
+def split_str_dict_keys_values(string_dict_list, year_vals = False):
+    keys = [x.split(":")[0] for x in string_dict_list]
+    values = [x.split(":")[1] for x in string_dict_list]
+    if year_vals:
+        firstyear = [int(x.split(":")[1].split("-")[0]) for x in values if ":" in x]
+        lastyear = [int(x.split(":")[1].split("-")[1]) for x in values if ":" in x]
+        return keys, values, firstyear, lastyear
+    return keys, values
+
+def combine_years_columns(df1, df2, columns, indices=[0,0], strdictlike=False):
     for column in columns:
         column1_val = df1[column][indices[0]]
         column2_val = df2[column][indices[1]]  
         if pd.isnull(df1[column][indices[0]]):
             df1.loc[indices[0], column] = column2_val
             continue
-        elif column == 'FirstYear':
-            df1.loc[indices[0], column] = min(column1_val, column2_val)
-            continue
-        elif column == 'LastYear':
-            df1.loc[indices[0], column] = max(column1_val, column2_val)
-            continue
-        elif not pd.isnull(df2[column][indices[1]]): #Should handle errors. But not important as of now
-            values1 = [x for x in column1_val.split(",") if x != ""]
-            values2 = [x for x in column2_val.split(",") if x != ""]
-            things1 = [x.split(":")[0] if ":" in x else x for x in values1]
-            minyears1 = [int(x.split(":")[1].split("-")[0]) for x in values1 if ":" in x]
-            maxyears1 = [int(x.split(":")[1].split("-")[1]) for x in values1 if ":" in x]
-            things2 = [x.split(":")[0] for x in values2]
-            minyears2 = [int(x.split(":")[1].split("-")[0]) for x in values2]
-            maxyears2 = [int(x.split(":")[1].split("-")[1]) for x in values2]
-            tuples1 = list(zip(things1, minyears1, maxyears1))
-            tuples2 = list(zip(things2, minyears2, maxyears2))
+        elif not pd.isnull(df2[column][indices[1]]):
+            if column == 'FirstYear':
+                df1.loc[indices[0], column] = min(column1_val, column2_val)
+                continue
+            if column == 'LastYear':
+                df1.loc[indices[0], column] = max(column1_val, column2_val)
+                continue
+            
+            if not strdictlike: #locations_with_years
+                #Assuming list inside the string (strlistlike)
+                values1 = re.findall(r"'(.*?)'", column1_val)
+                values2 = re.findall(r"'(.*?)'", column2_val)
+            if strdictlike: #StylesYears
+                values1 = [x for x in column1_val.split(",") if x != ""]
+                values2 = [x for x in column2_val.split(",") if x != ""]
+
+            keys1, _, minyears1, maxyears1 = split_str_dict_keys_values(values1, year_vals=True)
+            keys2, _, minyears2, maxyears2 = split_str_dict_keys_values(values2, year_vals=True)
+
+            tuples1 = list(zip(keys1, minyears1, maxyears1))
+            tuples2 = list(zip(keys2, minyears2, maxyears2))
             for instance1, minyear1, maxyear1 in tuples1:
                 index1 = tuples1.index((instance1, minyear1, maxyear1))
                 if instance1 in [x[0] for x in tuples2]:
@@ -198,6 +211,52 @@ def combine_years_columns(df1, df2, columns, indices=[0,0]):
             df1.loc[indices[0], column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
     return df1
 
+def painter_palette_combine_instances_by_index(df, primary_artist_index, secondary_artist_index):
+    df = df.copy()
+    df1 = df.loc[[primary_artist_index]].reset_index(drop=True) #Should be only one row
+    df2 = df.loc[[secondary_artist_index]].reset_index(drop=True)
+    string_extend_columns = ['styles', 'occupations', 'PaintingsExhibitedAt', 'PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers',]
+    dict_like_columns = ['Art500k_Movements', 'styles_extended', 'StylesCount','PaintingsExhibitedAtCount', 'ArtMovement']
+    list_like_columns = ['locations'] 
+    years_columns = ['FirstYear','LastYear', 'locations_with_years'] #StylesYears is added separately
+
+    #Columns where first value is chosen if it is not NaN
+    if pd.isnull(df1['Nationality'][0]):
+        df1.loc[0,'Nationality'] = df2['Nationality'][0]
+    if pd.isnull(df1['citizenship'][0]):
+        df1.loc[0,'citizenship'] = df2['citizenship'][0]
+    if pd.isnull(df1['gender'][0]):
+        df1.loc[0,'gender'] = df2['gender'][0]
+    if pd.isnull(df1['movement'][0]):
+        df1.loc[0,'movement'] = df2['movement'][0]
+    if pd.isnull(df1['birth_place'][0]):
+        df1.loc[0,'birth_place'] = df2['birth_place'][0]
+    if pd.isnull(df1['death_place'][0]):
+        df1.loc[0,'death_place'] = df2['death_place'][0]
+    if pd.isnull(df1['birth_year'][0]):
+        df1.loc[0,'birth_year'] = df2['birth_year'][0]
+    if pd.isnull(df1['death_year'][0]):
+        df1.loc[0,'death_year'] = df2['death_year'][0]
+    if pd.isnull(df1['wikiart_pictures_count'][0]):
+        df1.loc[0,'wikiart_pictures_count'] = df2['wikiart_pictures_count'][0]
+    else:
+        df1.loc[0,'wikiart_pictures_count'] = max(df1['wikiart_pictures_count'][0], df2['wikiart_pictures_count'][0]) #Could consider to add them
+
+    if pd.isnull(df1['Contemporary'][0]):
+        df1.loc[0,'Contemporary'] = df2['Contemporary'][0]
+    if pd.isnull(df1['Type'][0]):
+        df1.loc[0,'Type'] = df2['Type'][0]
+
+    df1 = combine_string_extend_columns(df1, df2, string_extend_columns)
+    df1 = combine_dict_like_columns(df1, df2, dict_like_columns)
+    df1 = combine_list_like_str_columns(df1, df2, list_like_columns)
+    df1 = combine_years_columns(df1, df2, years_columns)
+    df1 = combine_years_columns(df1, df2, ['StylesYears'], strdictlike=True)
+
+    df = df.drop([secondary_artist_index, primary_artist_index])
+    df = pd.concat([df, df1], ignore_index=True)
+
+
 ############################# Art500k functions #############################
 
 def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
@@ -206,7 +265,7 @@ def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     df2 = df[df['artist'] == secondary_artist_name].reset_index(drop=True)
     string_extend_columns = ['PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers','PaintingsExhibitedAt']
     dict_like_columns = ['ArtMovement', 'StylesCount','PaintingsExhibitedAtCount']
-    years_columns = ['FirstYear','LastYear','StylesYears']
+    years_columns = ['FirstYear','LastYear'] #StylesYears is added separately
 
     if pd.isnull(df1['Nationality'][0]):
         df1.loc[0,'Nationality'] = df2['Nationality'][0] 
@@ -218,6 +277,7 @@ def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     df1 = combine_string_extend_columns(df1, df2, string_extend_columns)
     df1 = combine_dict_like_columns(df1, df2, dict_like_columns)
     df1 = combine_years_columns(df1, df2, years_columns)
+    df1 = combine_years_columns(df1, df2, ['StylesYears'], strdictlike=True)
 
     df = df[(df['artist'] != secondary_artist_name) & (df['artist'] != primary_artist_name)]
     df = pd.concat([df, df1], ignore_index=True)
@@ -229,7 +289,7 @@ def art500k_combine_instances_by_index(df, primary_artist_index, secondary_artis
     df2 = df.loc[[secondary_artist_index]].reset_index(drop=True)
     string_extend_columns = ['PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers','PaintingsExhibitedAt']
     dict_like_columns = ['ArtMovement', 'StylesCount','PaintingsExhibitedAtCount']
-    years_columns = ['FirstYear','LastYear','StylesYears']
+    years_columns = ['FirstYear','LastYear'] #StylesYears is added separately
 
     if pd.isnull(df1['Nationality'][0]):
         df1.loc[0,'Nationality'] = df2['Nationality'][0]
@@ -241,9 +301,10 @@ def art500k_combine_instances_by_index(df, primary_artist_index, secondary_artis
     df1 = combine_string_extend_columns(df1, df2, string_extend_columns)
     df1 = combine_dict_like_columns(df1, df2, dict_like_columns)
     df1 = combine_years_columns(df1, df2, years_columns)
+    df1 = combine_years_columns(df1, df2, ['StylesYears'], strdictlike=True)
 
     df = df.drop([secondary_artist_index, primary_artist_index])
-    df = pd.concat([df, df1], ignore_index=False)
+    df = pd.concat([df, df1], ignore_index=True)
     return df
 
 
