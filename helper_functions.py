@@ -124,26 +124,26 @@ def combine_list_like_str_columns(df1, df2, columns, indices=[0,0]):
             df1.loc[indices[0], column] = ",".join([f"'{x}'" for x in values])
     return df1
 
-def combine_string_extend_columns(df1, df2, columns):
+def combine_string_extend_columns(df1, df2, columns, indices=[0,0]):
     for column in columns:
-        column1_val = df1[column][0]
-        column2_val = df2[column][0]
+        column1_val = df1[column][indices[0]]
+        column2_val = df2[column][indices[1]]
         if pd.isnull(column1_val):
-            df1.loc[0, column] = column2_val
+            df1.loc[indices[0], column] = column2_val
         elif not pd.isnull(column2_val):
             values1 = [x for x in column1_val.split(",") if x != ""]
             values2 = [x for x in column2_val.split(",") if x != ""]
             values = list(set(values1 + values2))
-            df1.loc[0, column] = ",".join(values)
+            df1.loc[indices[0], column] = ",".join(values)
     return df1
 
-def combine_dict_like_columns(df1, df2, columns):
+def combine_dict_like_columns(df1, df2, columns, indices=[0,0]):
     for column in columns:
-        column1_val = df1[column][0]
-        column2_val = df2[column][0]        
-        if pd.isnull(df1[column][0]):
-            df1.loc[0, column] = column2_val
-        elif not pd.isnull(df2[column][0]):
+        column1_val = df1[column][indices[0]]
+        column2_val = df2[column][indices[1]]        
+        if pd.isnull(df1[column][indices[0]]):
+            df1.loc[indices[0], column] = column2_val
+        elif not pd.isnull(df2[column][indices[1]]):
             values1 = re.findall(r"{(.*?)}", column1_val)
             values2 = re.findall(r"{(.*?)}", column2_val)
             tuples1 = [tuple(x.split(":")) for x in values1]
@@ -156,24 +156,23 @@ def combine_dict_like_columns(df1, df2, columns):
             for instance, count in tuples2:
                 if instance not in [x[0] for x in tuples1]:
                     tuples1.append((instance, count))
-            df1.loc[0, column] = ",".join(["{" + ":".join(map(str, x)) + "}" for x in tuples1])
+            df1.loc[indices[0], column] = ",".join(["{" + ":".join(map(str, x)) + "}" for x in tuples1])
     return df1
 
-
-def combine_years_columns(df1, df2, columns):
+def combine_years_columns(df1, df2, columns, indices=[0,0]):
     for column in columns:
-        column1_val = df1[column][0]
-        column2_val = df2[column][0]  
-        if pd.isnull(df1[column][0]):
-            df1.loc[0, column] = column2_val
+        column1_val = df1[column][indices[0]]
+        column2_val = df2[column][indices[1]]  
+        if pd.isnull(df1[column][indices[0]]):
+            df1.loc[indices[0], column] = column2_val
             continue
         elif column == 'FirstYear':
-            df1.loc[0, column] = min(column1_val, column2_val)
+            df1.loc[indices[0], column] = min(column1_val, column2_val)
             continue
         elif column == 'LastYear':
-            df1.loc[0, column] = max(column1_val, column2_val)
+            df1.loc[indices[0], column] = max(column1_val, column2_val)
             continue
-        elif not pd.isnull(df2[column][0]): #Should handle errors. But not important as of now
+        elif not pd.isnull(df2[column][indices[1]]): #Should handle errors. But not important as of now
             values1 = [x for x in column1_val.split(",") if x != ""]
             values2 = [x for x in column2_val.split(",") if x != ""]
             things1 = [x.split(":")[0] if ":" in x else x for x in values1]
@@ -196,14 +195,14 @@ def combine_years_columns(df1, df2, columns):
             for instance2, minyear2, maxyear2 in tuples2:
                 if instance2 not in [x[0] for x in tuples1_copy]:
                     tuples1.append((instance2, minyear2, maxyear2))
-            df1.loc[0, column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
+            df1.loc[indices[0], column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
     return df1
 
 ############################# Art500k functions #############################
 
 def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     df = df.copy()
-    df1 = df[df['artist'] == primary_artist_name].reset_index(drop=True)
+    df1 = df[df['artist'] == primary_artist_name].reset_index(drop=True) #Set to 0 (might be changed)
     df2 = df[df['artist'] == secondary_artist_name].reset_index(drop=True)
     string_extend_columns = ['PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers','PaintingsExhibitedAt']
     dict_like_columns = ['ArtMovement', 'StylesCount','PaintingsExhibitedAtCount']
