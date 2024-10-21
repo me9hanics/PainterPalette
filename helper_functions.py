@@ -224,11 +224,11 @@ def combine_years_columns(df1, df2, columns, indices=[0,0], strdictlike=False, m
                         tuples1.append((instance2, location_yearspair2))
 
                 tuples = []
-                for instance,location_yearspair in tuples1:
-                    years_str = ",".join([str(location_yearspair[n][0])+"-"+str(location_yearspair[n][0]) for n in range(len(location_yearspair))])
-                    tuples = tuples + [(instance, years_str)]
-                df1.loc[indices[0], column] = "["+",".join([f"{x[0]}:{x[1]}" for x in tuples])+"]"
-
+                for instance, location_yearspair in tuples1:
+                    years_str = ",".join([str(location_yearspair[n][0]) + "-" + str(location_yearspair[n][0]) for n in range(len(location_yearspair))])
+                    tuples.append((f"'{instance}'", years_str))
+                df1.loc[indices[0], column] = "[" + ",".join([f"{x[0]}:{x[1]}" for x in tuples]) + "]"
+                
             if minmax:
                 tuples1 = list(zip(keys1, minyears1, maxyears1))
                 tuples2 = list(zip(keys2, minyears2, maxyears2))
