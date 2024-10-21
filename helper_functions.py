@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np #Can do an workaround to avoid this to save time
 import sys
 import re
+import ast
 import spacy
 from collections import Counter
 
@@ -118,8 +119,8 @@ def combine_list_like_str_columns(df1, df2, columns, indices=[0,0]):
         if pd.isnull(df1[column][indices[0]]):
             df1.loc[indices[0], column] = column2_val
         elif not pd.isnull(df2[column][indices[1]]):
-            values1 = re.findall(r"'(.*?)'", column1_val)
-            values2 = re.findall(r"'(.*?)'", column2_val)
+            values1 =  ast.literal_eval(column1_val) #A possibility to use re.findall(r"'(.*?)'", column1_val), however with inputs like 's-Hertogenbosch it'd fail
+            values2 = ast.literal_eval(column2_val)
             values = list(set(values1 + values2))
             df1.loc[indices[0], column] = "["+",".join([f"'{x}'" for x in values])+"]"
     return df1
@@ -163,12 +164,25 @@ def split_str_dict_keys_values(string_dict_list, year_vals = False):
     keys = [x.split(":")[0] for x in string_dict_list]
     values = [x.split(":")[1] for x in string_dict_list]
     if year_vals:
-        firstyear = [int(x.split(":")[1].split("-")[0]) for x in values if ":" in x]
-        lastyear = [int(x.split(":")[1].split("-")[1]) for x in values if ":" in x]
-        return keys, values, firstyear, lastyear
+        firstyears = []
+        lastyears = []
+        firstyears_min =[]
+        lastyears_max = []
+        year_pairs = []
+        for value in values:
+            val_firstyears = [int(x.split("-")[0]) for x in value.split(",") if "-" in value]
+            val_lastyears = [int(x.split("-")[1]) for x in value.split(",") if "-" in value]
+            firstyears.append(val_firstyears)
+            lastyears.append(val_lastyears)
+            firstyears_min.append(min(val_firstyears))
+            lastyears_max.append(max(val_lastyears))
+        for i in range(len(firstyears)):
+            year_pairs.append(list(zip(firstyears[i], lastyears[i])))
+        return keys, values, firstyears, lastyears, firstyears_min, lastyears_max, year_pairs
     return keys, values
 
-def combine_years_columns(df1, df2, columns, indices=[0,0], strdictlike=False):
+
+def combine_years_columns(df1, df2, columns, indices=[0,0], strdictlike=False, minmax=False):
     for column in columns:
         column1_val = df1[column][indices[0]]
         column2_val = df2[column][indices[1]]  
@@ -185,33 +199,55 @@ def combine_years_columns(df1, df2, columns, indices=[0,0], strdictlike=False):
             
             if not strdictlike: #locations_with_years
                 #Assuming list inside the string (strlistlike)
-                values1 = re.findall(r"'(.*?)'", column1_val)
-                values2 = re.findall(r"'(.*?)'", column2_val)
+                values1 = ast.literal_eval(column1_val)
+                values2 = ast.literal_eval(column2_val)
             if strdictlike: #StylesYears
                 values1 = [x for x in column1_val.split(",") if x != ""]
                 values2 = [x for x in column2_val.split(",") if x != ""]
 
-            keys1, _, minyears1, maxyears1 = split_str_dict_keys_values(values1, year_vals=True)
-            keys2, _, minyears2, maxyears2 = split_str_dict_keys_values(values2, year_vals=True)
+            keys1, _, _, _, minyears1, maxyears1, locations_yearpairs1 = split_str_dict_keys_values(values1, year_vals=True)
+            keys2, _, _, _, minyears2, maxyears2, locations_yearpairs2 = split_str_dict_keys_values(values2, year_vals=True)
 
-            tuples1 = list(zip(keys1, minyears1, maxyears1))
-            tuples2 = list(zip(keys2, minyears2, maxyears2))
-            for instance1, minyear1, maxyear1 in tuples1:
-                index1 = tuples1.index((instance1, minyear1, maxyear1))
-                if instance1 in [x[0] for x in tuples2]:
-                    index2 = [x[0] for x in tuples2].index(instance1)
-                    instance2, minyear2, maxyear2 = tuples2[index2]
-                    minyear = min(minyear1, minyear2)
-                    maxyear = max(maxyear1, maxyear2)
-                    tuples1[index1] = (instance1, minyear, maxyear)
-            tuples1_copy = tuples1.copy()
-            for instance2, minyear2, maxyear2 in tuples2:
-                if instance2 not in [x[0] for x in tuples1_copy]:
-                    tuples1.append((instance2, minyear2, maxyear2))
-            df1.loc[indices[0], column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
+            if not minmax:
+                tuples1 = list(zip(keys1, locations_yearpairs1))
+                tuples2 = list(zip(keys2, locations_yearpairs2))
+                for instance1, location_yearspair1 in tuples1:
+                    index1 = tuples1.index((instance1, location_yearspair1))
+                    if instance1 in [x[0] for x in tuples2]:
+                        index2 = [x[0] for x in tuples2].index(instance1)
+                        instance2, location_yearspair2 = tuples2[index2]
+                        location_yearspairs = list(set(location_yearspair1 + location_yearspair2))
+                        tuples1[index1] = (instance1, location_yearspairs)
+                tuples1_copy = tuples1.copy()
+                for instance2, location_yearspair2 in tuples2:
+                    if instance2 not in [x[0] for x in tuples1_copy]:
+                        tuples1.append((instance2, location_yearspair2))
+
+                tuples = []
+                for instance,location_yearspair in tuples1:
+                    years_str = ",".join([str(location_yearspair[n][0])+"-"+str(location_yearspair[n][0]) for n in range(len(location_yearspair))])
+                    tuples = tuples + [(instance, years_str)]
+                df1.loc[indices[0], column] = "["+",".join([f"{x[0]}:{x[1]}" for x in tuples])+"]"
+
+            if minmax:
+                tuples1 = list(zip(keys1, minyears1, maxyears1))
+                tuples2 = list(zip(keys2, minyears2, maxyears2))
+                for instance1, minyear1, maxyear1 in tuples1:
+                    index1 = tuples1.index((instance1, minyear1, maxyear1))
+                    if instance1 in [x[0] for x in tuples2]:
+                        index2 = [x[0] for x in tuples2].index(instance1)
+                        instance2, minyear2, maxyear2 = tuples2[index2]
+                        minyear = min(minyear1, minyear2)
+                        maxyear = max(maxyear1, maxyear2)
+                        tuples1[index1] = (instance1, minyear, maxyear)
+                tuples1_copy = tuples1.copy()
+                for instance2, minyear2, maxyear2 in tuples2:
+                    if instance2 not in [x[0] for x in tuples1_copy]:
+                        tuples1.append((instance2, minyear2, maxyear2))    
+                df1.loc[indices[0], column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
     return df1
 
-def painter_palette_combine_instances_by_index(df, primary_artist_index, secondary_artist_index):
+def painter_palette_combine_instances_by_index(df, primary_artist_index, secondary_artist_index, return_index=False):
     df = df.copy()
     df1 = df.loc[[primary_artist_index]].reset_index(drop=True) #Should be only one row
     df2 = df.loc[[secondary_artist_index]].reset_index(drop=True)
@@ -254,7 +290,13 @@ def painter_palette_combine_instances_by_index(df, primary_artist_index, seconda
     df1 = combine_years_columns(df1, df2, ['StylesYears'], strdictlike=True)
 
     df = df.drop([secondary_artist_index, primary_artist_index])
-    df = pd.concat([df, df1], ignore_index=True)
+
+    max_index = max(df.index)
+    df1.index = [max_index+1] #To avoid index conflicts
+    df = pd.concat([df, df1], ignore_index=False) #This is important for cases when we don't want to reset the index of other rows 
+    if return_index:
+        return df, df[-1:].index[0]
+    return df
 
 
 ############################# Art500k functions #############################
@@ -277,7 +319,7 @@ def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     df1 = combine_string_extend_columns(df1, df2, string_extend_columns)
     df1 = combine_dict_like_columns(df1, df2, dict_like_columns)
     df1 = combine_years_columns(df1, df2, years_columns)
-    df1 = combine_years_columns(df1, df2, ['StylesYears'], strdictlike=True)
+    df1 = combine_years_columns(df1, df2, ['StylesYears'], strdictlike=True, minmax=True)
 
     df = df[(df['artist'] != secondary_artist_name) & (df['artist'] != primary_artist_name)]
     df = pd.concat([df, df1], ignore_index=True)
