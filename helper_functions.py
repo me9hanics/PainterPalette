@@ -306,7 +306,7 @@ def wikiart_combine_instances(df, primary_artist_name, secondary_artist_name):
     string_extend_columns = ['styles', 'occupations',]
     dict_like_columns = ['styles_extended', ]
     list_like_columns = ['locations']
-    years_columns = ['FirstYear','LastYear', 'locations_with_years'] #StylesYears is added separately
+    years_columns = ['locations_with_years'] #StylesYears is added separately
     first_value_columns = ['movement', 'birth_place', 'death_place', 'birth_year', 'death_year', 'gender', 'citizenship']
 
     #sum_like_column columns: pictures_count (might have np.nan values)
