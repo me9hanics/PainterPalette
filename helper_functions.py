@@ -553,3 +553,18 @@ def suspicious_artist_years_check(artist_years):
     if order_check(artist_years_ordered, artist_years_modified) or difference_check(artist_years_modified):
         return True
     return False
+
+def first_year_setting(birth_year, difference=20):
+    return birth_year, birth_year+difference #
+
+def last_year_setting(death_year, difference=0):
+    return death_year-difference, death_year
+
+def years_setting(df, fix_first_year_artists, fix_last_year_artists, first_year_difference=20, last_year_difference=0):
+    for artist in fix_first_year_artists:
+        index = df[df['artist']==artist].index[0]
+        df.at[index, 'FirstYear'] = first_year_setting(df.at[index, 'birth_date'], first_year_difference)[0]
+    for artist in fix_last_year_artists:
+        index = df[df['artist']==artist].index[0]
+        df.at[index, 'LastYear'] = last_year_setting(df.at[index, 'death_date'], last_year_difference)[1]
+    return df
