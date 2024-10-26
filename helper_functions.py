@@ -19,27 +19,7 @@ def create_painter_palette(wikiart_artists, art500k_artists, wikiart_art500k_map
     artists = pd.concat([artists, additional_artists_art500k], ignore_index=True)
     return artists
 
-def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df = None):
-    if wikiart_df is None:
-        wikiart_df = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists.csv') 
-    if art500k_df is None:
-        art500k_df = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/art500k_artists.csv')
-    artists_c = pd.DataFrame()
-    for key, value in mapping.items():
-        wikiart_artist_df = wikiart_df[wikiart_df['artist'] == key]; art500k_artist_df = art500k_df[art500k_df['artist'] == value]
-        columns_list_W = wikiart_df.columns.tolist(); columns_list_A = art500k_df.columns.tolist()[1:]
-        combined_df = pd.concat([wikiart_artist_df[columns_list_W].reset_index(), art500k_artist_df[columns_list_A].reset_index()],  axis=1).drop(columns=['index'])
-        artists_c = pd.concat([artists_c, combined_df], axis=0).reset_index(drop=True)
-    #cols = artists_c.columns.tolist();
-    #cols = cols[0:1]+cols[7:8]+cols[5:7]+cols[1:2]+cols[3:4]+cols[19:]+cols[2:3]+cols[9:10]+cols[4:5]+cols[15:19]+cols[8:9]+cols[10:15]
-    cols = ["artist", "Nationality", "citizenship", 'gender', 'styles', 'movement', 'ArtMovement', 'birth_place','death_place',
-            'birth_year', 'death_year', 'FirstYear', 'LastYear', 'pictures_count', 'locations','locations_with_years',
-            'styles_extended', 'StylesCount', 'StylesYears', 'occupations',  'PaintingsExhibitedAt', 'PaintingsExhibitedAtCount',
-             'PaintingSchool', 'Influencedby', 'Influencedon', 'Pupils', 'Teachers','FriendsandCoworkers','Contemporary'
-            ] #Skipped:  'Type',
-    artists_c = artists_c[cols]
-    artists_c = artists_c.rename(columns={"pictures_count": "wikiart_pictures_count", 'ArtMovement': "Art500k_Movements"})
-    return artists_c
+############################# General functions #############################
 
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
 #The idea: if in certain columns (e.g. "Places", now "PaintingsExhibitedAt") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
@@ -74,7 +54,6 @@ def row_contains_values_switch(row, columns, texts, exceptions=None, switch_func
         break 
     return row2
 
-
 def switch_function_exclude_word(row_as_series, column_name, excluded_word):
     row = row_as_series.copy()
 
@@ -103,7 +82,6 @@ def switch_function_exclude_word(row_as_series, column_name, excluded_word):
             if row[column_name] == expression:
                 row[column_name] = ""
     return row
-
 
 def check_if_nan(entity):
     if type(entity) == float:
@@ -181,7 +159,6 @@ def split_str_dict_keys_values(string_dict_list, year_vals = False):
         return keys, values, firstyears, lastyears, firstyears_min, lastyears_max, year_pairs
     return keys, values
 
-
 def combine_years_columns(df1, df2, columns, indices=[0,0], strdictlike=False, minmax=False):
     for column in columns:
         column1_val = df1[column][indices[0]]
@@ -247,6 +224,8 @@ def combine_years_columns(df1, df2, columns, indices=[0,0], strdictlike=False, m
                 df1.loc[indices[0], column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
     return df1
 
+############################# PainterPalette manipulation functions #############################
+
 def painter_palette_combine_instances_by_index(df, primary_artist_index, secondary_artist_index, return_index=False):
     df = df.copy()
     df1 = df.loc[[primary_artist_index]].reset_index(drop=True) #Should be only one row
@@ -298,6 +277,27 @@ def painter_palette_combine_instances_by_index(df, primary_artist_index, seconda
         return df, df[-1:].index[0]
     return df
 
+def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df = None):
+    if wikiart_df is None:
+        wikiart_df = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/wikiart_artists.csv') 
+    if art500k_df is None:
+        art500k_df = pd.read_csv('https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/art500k_artists.csv')
+    artists_c = pd.DataFrame()
+    for key, value in mapping.items():
+        wikiart_artist_df = wikiart_df[wikiart_df['artist'] == key]; art500k_artist_df = art500k_df[art500k_df['artist'] == value]
+        columns_list_W = wikiart_df.columns.tolist(); columns_list_A = art500k_df.columns.tolist()[1:]
+        combined_df = pd.concat([wikiart_artist_df[columns_list_W].reset_index(), art500k_artist_df[columns_list_A].reset_index()],  axis=1).drop(columns=['index'])
+        artists_c = pd.concat([artists_c, combined_df], axis=0).reset_index(drop=True)
+    #cols = artists_c.columns.tolist();
+    #cols = cols[0:1]+cols[7:8]+cols[5:7]+cols[1:2]+cols[3:4]+cols[19:]+cols[2:3]+cols[9:10]+cols[4:5]+cols[15:19]+cols[8:9]+cols[10:15]
+    cols = ["artist", "Nationality", "citizenship", 'gender', 'styles', 'movement', 'ArtMovement', 'birth_place','death_place',
+            'birth_year', 'death_year', 'FirstYear', 'LastYear', 'pictures_count', 'locations','locations_with_years',
+            'styles_extended', 'StylesCount', 'StylesYears', 'occupations',  'PaintingsExhibitedAt', 'PaintingsExhibitedAtCount',
+             'PaintingSchool', 'Influencedby', 'Influencedon', 'Pupils', 'Teachers','FriendsandCoworkers','Contemporary'
+            ] #Skipped:  'Type',
+    artists_c = artists_c[cols]
+    artists_c = artists_c.rename(columns={"pictures_count": "wikiart_pictures_count", 'ArtMovement': "Art500k_Movements"})
+    return artists_c
 
 ############################# Art500k functions #############################
 
@@ -349,7 +349,6 @@ def art500k_combine_instances_by_index(df, primary_artist_index, secondary_artis
     df = pd.concat([df, df1], ignore_index=True)
     return df
 
-
 def art500k_combine_duplicate_name(df, name):
     df2 = df.copy()
     duplicates = df[df.duplicated(['artist'], keep=False)]
@@ -381,13 +380,11 @@ def initial_art500k_years_extract(date_string):
     years_list = list(map(int, years))  #List of years, as ints
     return years_list
 
-
 #Get the earliest and latest year for each artist (thus the interval)
 def initial_art500k_get_years_interval(years_list):
     if len(years_list)>0:
         return min(years_list), max(years_list)
     return None, None #Just if the list is empty
-
 
 def initial_art500k_get_artist_geolocations(artist_rows):
     nlp = spacy.load("en_core_web_sm") #Just English model. This may be a mistake, some locations may be from different languages
@@ -406,7 +403,6 @@ def initial_art500k_get_artist_geolocations(artist_rows):
     geolocations = list(set(geolocations)) #Duplicates are excluded with set()
     return initial_art500k_get_geolocations_string(geolocations) #Could switch to dictstring version
 
-
 def initial_art500k_get_multiple_artists_geolocations(artist_rows):
     nlp = spacy.load("en_core_web_sm")  # ust English. May be a mistake, some locations could be from different languages
 
@@ -424,15 +420,12 @@ def initial_art500k_get_multiple_artists_geolocations(artist_rows):
     result_string = ",".join([f"{{{location}:{count}}}" for location, count in location_counter.items()])
     return result_string
 
-
 def initial_art500k_get_geolocations_string(location_list): # Version A
     return ', '.join(location_list)
-
 
 def initial_art500k_get_geolocations_dictstring(location_list):
     location_counter = Counter(location_list)
     return ', '.join([f'{{{key}:{value}}}' for key, value in location_counter.items()])
-
 
 ############################# Similarity functions #############################
 
@@ -440,15 +433,12 @@ def similarity(s1, s2):
     import difflib #Import here, because it is only used here
     return difflib.SequenceMatcher(None, s1, s2).ratio()
 
-
 def similarity_difference(s1, s2):
     return (1 - similarity(s1, s2))*len(s1)
-
 
 def character_difference_naive(a, b, similarity_score):
     #Usually, similarity_score comes from similarity
     return similarity_score*len(a)
-
 
 def similarity_character_difference_operations(s1,s2):
     import difflib #Import here, because it is only used here
@@ -466,6 +456,22 @@ def similarity_character_difference_operations(s1,s2):
 
     return similarity, character_difference, steps
 
+def sort_artists_by_similarity(df, original_string, similarity_func=similarity):
+    """
+    Sorts DataFrame 'artist' column similarity, based on the given similarity function.
+
+    Parameters:
+    df (pd.DataFrame): DataFrame containing the artist names.
+    original_string (str): String to compare to
+    similarity_func (function): The similarity function to use.
+
+    Returns:
+    pd.DataFrame: The original DataFrame sorted.
+    """
+
+    df['similarity'] = df['artist'].apply(lambda x: similarity_func(original_string, x))
+    sorted_df = df.sort_values(by='similarity', ascending=False)
+    return sorted_df
 
 def calculate_similarities_df(artists_X, artists_Y):
     sims_df = pd.DataFrame(columns=['artist (original)','"Best" pair','Similarity', 'Character difference', 'Operations to transform'])
@@ -491,3 +497,59 @@ def calculate_similarities_df(artists_X, artists_Y):
 
     sims_df = (sims_df.sort_values(by=['Similarity'], ascending=False)).reset_index(drop=True)
     return sims_df
+
+############################# Year checking functions #############################
+
+def years_completer(yearslist): #Birth, first active year, last active year, death
+    """
+    Expecting 4 values, in this order: birthyear, first active year, last active year, death year.
+    
+    Returns either a nan (if it is insufficient data), or a filled list of years.
+    This is not used for the dataset creation typically, but for analysis (fill blanks).
+    """
+    if np.isnan(yearslist[0]) and np.isnan(yearslist[1]):
+        return np.nan
+    if np.isnan(yearslist[2]) and np.isnan(yearslist[3]):
+        return np.nan
+    
+    if np.isnan(yearslist[0]):
+        yearslist[0] = yearslist[1]
+    if np.isnan(yearslist[1]):
+        yearslist[1] = yearslist[0]
+    if np.isnan(yearslist[2]):
+        yearslist[2] = yearslist[3]
+    if np.isnan(yearslist[3]):
+        yearslist[3] = yearslist[2]
+
+    #return sorted(yearslist) #Sort just in case
+    return yearslist
+
+def order_check(years_ordered, years_original_order):
+    if years_ordered != years_original_order:
+        return True
+    return False
+
+def difference_check(yearslist):
+    if min(yearslist) +110 < max(yearslist):
+        return True
+    return False
+
+def artist_years_order_check(artist_years):
+    """Expecting 4 years, in this order: birthyear, first active year, last active year, death year."""
+    artist_years_modified = years_completer(artist_years)
+    if type(artist_years_modified)==float: #np.nan
+        return False
+    artist_years_ordered = sorted(artist_years_modified)
+    if order_check(artist_years_ordered, artist_years_modified):
+        return True
+    return False
+
+def suspicious_artist_years_check(artist_years):
+    #Birthyear, first year of activity, last year of activity, death year
+    artist_years_modified = years_completer(artist_years)
+    if type(artist_years_modified)==float: #np.nan
+        return False
+    artist_years_ordered = sorted(artist_years_modified)
+    if order_check(artist_years_ordered, artist_years_modified) or difference_check(artist_years_modified):
+        return True
+    return False
