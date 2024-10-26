@@ -224,44 +224,36 @@ def combine_years_columns(df1, df2, columns, indices=[0,0], strdictlike=False, m
                 df1.loc[indices[0], column] = ",".join([f"{x[0]}:{x[1]}-{x[2]}" for x in tuples1])
     return df1
 
+def combine_columns_first_value(df1, df2, columns, indices=[0,0]):
+    for column in columns:
+        if pd.isnull(df1[column][indices[0]]):
+            df1.loc[indices[0], column] = df2[column][indices[1]]
+    return df1
 ############################# PainterPalette manipulation functions #############################
 
 def painter_palette_combine_instances_by_index(df, primary_artist_index, secondary_artist_index, return_index=False):
     df = df.copy()
+    if primary_artist_index not in df.index or secondary_artist_index not in df.index:
+        if primary_artist_index not in df.index:
+            raise ValueError(f"Primary artist index {primary_artist_index} not found.")
+        if secondary_artist_index not in df.index:
+            raise ValueError(f"Secondary artist index {secondary_artist_index} not found.")
+        return df
     df1 = df.loc[[primary_artist_index]].reset_index(drop=True) #Should be only one row
     df2 = df.loc[[secondary_artist_index]].reset_index(drop=True)
     string_extend_columns = ['styles', 'occupations', 'PaintingsExhibitedAt', 'PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers',]
     dict_like_columns = ['Art500k_Movements', 'styles_extended', 'StylesCount','PaintingsExhibitedAtCount', 'ArtMovement']
     list_like_columns = ['locations'] 
     years_columns = ['FirstYear','LastYear', 'locations_with_years'] #StylesYears is added separately
+    first_value_columns = ['Nationality', 'citizenship', 'gender', 'movement', 'birth_place', 'death_place', 'birth_year', 'death_year', 'Contemporary', 'Type']
+    #wikiart_pictures_count is handled separately
 
     #Columns where first value is chosen if it is not NaN
-    if pd.isnull(df1['Nationality'][0]):
-        df1.loc[0,'Nationality'] = df2['Nationality'][0]
-    if pd.isnull(df1['citizenship'][0]):
-        df1.loc[0,'citizenship'] = df2['citizenship'][0]
-    if pd.isnull(df1['gender'][0]):
-        df1.loc[0,'gender'] = df2['gender'][0]
-    if pd.isnull(df1['movement'][0]):
-        df1.loc[0,'movement'] = df2['movement'][0]
-    if pd.isnull(df1['birth_place'][0]):
-        df1.loc[0,'birth_place'] = df2['birth_place'][0]
-    if pd.isnull(df1['death_place'][0]):
-        df1.loc[0,'death_place'] = df2['death_place'][0]
-    if pd.isnull(df1['birth_year'][0]):
-        df1.loc[0,'birth_year'] = df2['birth_year'][0]
-    if pd.isnull(df1['death_year'][0]):
-        df1.loc[0,'death_year'] = df2['death_year'][0]
     if pd.isnull(df1['wikiart_pictures_count'][0]):
         df1.loc[0,'wikiart_pictures_count'] = df2['wikiart_pictures_count'][0]
     else:
         df1.loc[0,'wikiart_pictures_count'] = max(df1['wikiart_pictures_count'][0], df2['wikiart_pictures_count'][0]) #Could consider to add them
-
-    if pd.isnull(df1['Contemporary'][0]):
-        df1.loc[0,'Contemporary'] = df2['Contemporary'][0]
-    if pd.isnull(df1['Type'][0]):
-        df1.loc[0,'Type'] = df2['Type'][0]
-
+    df1 = combine_columns_first_value(df1, df2, first_value_columns)
     df1 = combine_string_extend_columns(df1, df2, string_extend_columns)
     df1 = combine_dict_like_columns(df1, df2, dict_like_columns)
     df1 = combine_list_like_str_columns(df1, df2, list_like_columns)
@@ -285,8 +277,8 @@ def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df =
     artists_c = pd.DataFrame()
     for key, value in mapping.items():
         wikiart_artist_df = wikiart_df[wikiart_df['artist'] == key]; art500k_artist_df = art500k_df[art500k_df['artist'] == value]
-        columns_list_W = wikiart_df.columns.tolist(); columns_list_A = art500k_df.columns.tolist()[1:]
-        combined_df = pd.concat([wikiart_artist_df[columns_list_W].reset_index(), art500k_artist_df[columns_list_A].reset_index()],  axis=1).drop(columns=['index'])
+        columns_list_Wiki = wikiart_df.columns.tolist(); columns_list_Art500k = art500k_df.columns.tolist()[1:]
+        combined_df = pd.concat([wikiart_artist_df[columns_list_Wiki].reset_index(), art500k_artist_df[columns_list_Art500k].reset_index()],  axis=1).drop(columns=['index'])
         artists_c = pd.concat([artists_c, combined_df], axis=0).reset_index(drop=True)
     #cols = artists_c.columns.tolist();
     #cols = cols[0:1]+cols[7:8]+cols[5:7]+cols[1:2]+cols[3:4]+cols[19:]+cols[2:3]+cols[9:10]+cols[4:5]+cols[15:19]+cols[8:9]+cols[10:15]
@@ -299,23 +291,53 @@ def create_painter_dataset_from_mapping(mapping, wikiart_df = None, art500k_df =
     artists_c = artists_c.rename(columns={"pictures_count": "wikiart_pictures_count", 'ArtMovement': "Art500k_Movements"})
     return artists_c
 
-############################# Art500k functions #############################
+############################# Art500k/WikiArt functions #############################
+
+def wikiart_combine_instances(df, primary_artist_name, secondary_artist_name):
+    df = df.copy()
+    if primary_artist_name not in df['artist'].values or secondary_artist_name not in df['artist'].values:
+        if primary_artist_name not in df['artist'].values:
+            raise ValueError(f"Primary artist {primary_artist_name} not found.")
+        if secondary_artist_name not in df['artist'].values:
+            raise ValueError(f"Secondary artist {secondary_artist_name} not found.")
+        return df
+    df1 = df[df['artist'] == primary_artist_name].reset_index(drop=True) #Set to 0 (might be changed)
+    df2 = df[df['artist'] == secondary_artist_name].reset_index(drop=True)
+    string_extend_columns = ['styles', 'occupations',]
+    dict_like_columns = ['styles_extended', ]
+    list_like_columns = ['locations']
+    years_columns = ['FirstYear','LastYear', 'locations_with_years'] #StylesYears is added separately
+    first_value_columns = ['movement', 'birth_place', 'death_place', 'birth_year', 'death_year', 'gender', 'citizenship']
+
+    #sum_like_column columns: pictures_count (might have np.nan values)
+    df1.loc[0,'pictures_count'] = np.nansum([df1['pictures_count'][0], df2['pictures_count'][0]])
+
+    df1 = combine_columns_first_value(df1, df2, first_value_columns)
+    df1 = combine_string_extend_columns(df1, df2, string_extend_columns)
+    df1 = combine_dict_like_columns(df1, df2, dict_like_columns)
+    df1 = combine_list_like_str_columns(df1, df2, list_like_columns)
+    df1 = combine_years_columns(df1, df2, years_columns)
+
+    df = df[(df['artist'] != secondary_artist_name) & (df['artist'] != primary_artist_name)]
+    df = pd.concat([df, df1], ignore_index=True)
+    return df
 
 def art500k_combine_instances(df, primary_artist_name, secondary_artist_name):
     df = df.copy()
+    if primary_artist_name not in df['artist'].values or secondary_artist_name not in df['artist'].values:
+        if primary_artist_name not in df['artist'].values:
+            raise ValueError(f"Primary artist {primary_artist_name} not found.")
+        if secondary_artist_name not in df['artist'].values:
+            raise ValueError(f"Secondary artist {secondary_artist_name} not found.")
+        return df
     df1 = df[df['artist'] == primary_artist_name].reset_index(drop=True) #Set to 0 (might be changed)
     df2 = df[df['artist'] == secondary_artist_name].reset_index(drop=True)
     string_extend_columns = ['PaintingSchool','Influencedby','Influencedon','Pupils', 'Teachers','FriendsandCoworkers','PaintingsExhibitedAt']
     dict_like_columns = ['ArtMovement', 'StylesCount','PaintingsExhibitedAtCount']
     years_columns = ['FirstYear','LastYear'] #StylesYears is added separately
+    first_value_columns = ['Nationality', 'Contemporary', 'Type']
 
-    if pd.isnull(df1['Nationality'][0]):
-        df1.loc[0,'Nationality'] = df2['Nationality'][0] 
-    if pd.isnull(df1['Contemporary'][0]):
-        df1.loc[0,'Contemporary'] = df2['Contemporary'][0]
-    if pd.isnull(df1['Type'][0]):
-        df1.loc[0,'Type'] = df2['Type'][0]
-
+    df1 = combine_columns_first_value(df1, df2, first_value_columns)
     df1 = combine_string_extend_columns(df1, df2, string_extend_columns)
     df1 = combine_dict_like_columns(df1, df2, dict_like_columns)
     df1 = combine_years_columns(df1, df2, years_columns)
