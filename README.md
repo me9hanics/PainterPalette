@@ -16,7 +16,7 @@
 </div>
 <hr>
 
-<h2><a href="https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv">Download Here (CSV)</a></h2>
+<h2><a href="https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv">Download Here (CSV)</a></h2>
 
 If you are looking for connecting the painters into a network, the **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** project **connected painters** based on **co-exhibitions** and analyzed the network afterwards. **[ArtProject](https://github.com/me9hanics/ArtProject/)** has other networks of the painters (and styles) too, e.g. based on **time and place**.
 
@@ -40,10 +40,10 @@ We have created multiple networks of painters (based on being at the same places
 
 ### Resulting dataset/file
 
-#### Download the latest version (*1.0.1*) [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv)
-- [CSV](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.csv)
-- [SQL](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.sql)
-- [Excel](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.1/PainterPalette.xlsx)
+#### Download the latest version (*1.0.2*) [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv)
+- [CSV](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv)
+- [SQL](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.sql)
+- [Excel](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.xlsx)
 
 In any case, the final ("compiled") dataset is stored in the *artists.csv* file (raw file here: [raw](https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/artists.csv), often this is better import / look at as it doesn't have the commit ID in the URL so this gives back always the freshest version).<br>
 
