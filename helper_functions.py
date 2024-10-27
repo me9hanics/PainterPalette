@@ -21,6 +21,13 @@ def create_painter_palette(wikiart_artists, art500k_artists, wikiart_art500k_map
 
 ############################# General functions #############################
 
+def normalize_name(name):
+    import unicodedata
+    #Lowercase + replace non-ASCII characters
+    name = name.lower()
+    name = ''.join(c for c in unicodedata.normalize('NFKD', name) if c.isascii())
+    return name
+
 def row_contains_values_switch(row, columns, texts, exceptions=None, switch_function=None):
 #The idea: if in certain columns (e.g. "Places", now "PaintingsExhibitedAt") there is a certain value contained (e.g. "Main") but not an exception (e.g. "Maine"), then a switch function is called
     if exceptions is None or not isinstance(exceptions, list): #To iterate over it
