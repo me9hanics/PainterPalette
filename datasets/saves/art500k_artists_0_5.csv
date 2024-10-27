@@ -55,7 +55,7 @@ Thomas Sully,American,,{Romanticism:146},,,,,,1807.0,1872.0,United States,Romant
 Adolph Menzel,"German,Polish",,{Realism:27},,"Max Klinger,",,,,1845.0,1900.0,"Berlin, Germany, Kunsthalle, Hamburg, Munich","Realism:1845-1889,Impressionism:1846-1856","{Realism:27}, {Impressionism:5}","{Berlin:9},{Germany:10},{Kunsthalle:1},{Hamburg:2},{Munich:2}",No,Painting/Sculpture
 August Macke,German,"Der Blaue Reiter (The Blue Rider),Der Sturm","{German Expressionism:1},{Der Blaue Reiter:1},{Modern art:1},{Expressionism:1},{Expressionism,Orphism (Simultanism):127}","Robert Delaunay,","Expressionism,",,,"Franz Marc,Paul Klee,",1903.0,1914.0,"Germany, Bremen, Kunsthalle, Bonn, Stuttgart, Munich, Hamburg, Wuppertal, Switzerland, Zürich, Cologne","Expressionism:1903-1914,Orphism:1912-1914,Fauvism:1909-1914","{Expressionism:75}, {Orphism:33}, {Fauvism:19}","{Bonn:6},{Germany:17},{Wuppertal:1},{Zürich:1},{Switzerland:2},{Cologne:2},{Stuttgart:4},{Munich:4},{Bremen:1},{Kunsthalle:1},{Hamburg:2}",No,Painting/Sculpture
 Xu Beihong,Chinese,,{Republic of China (1912–1949):97},,,,,,1917.0,1953.0,,"Post-Impressionism:1931-1948,Realism:1939-1941,Romanticism:1918-1924,Expressionism:1930-1950,Ink and wash painting:1928-1950","{Post-Impressionism:15}, {Realism:11}, {Romanticism:5}, {Expressionism:45}, {Ink and wash painting:61}",,No,Painting/Sculpture
-Federico Barocci,,,{Baroque:1},,,,,,1586.0,1858.0,"London, Italy, England",,{Art of the Counter Reform / Altarpiece:1},"{Italy:1},{London:1},{England:1}",No,Painting/Sculpture
+Federico Barocci,,,{Baroque:1},,,,,,1586.0,1612.0,"London, Italy, England",,{Art of the Counter Reform / Altarpiece:1},"{Italy:1},{London:1},{England:1}",No,Painting/Sculpture
 Jean-Marc Nattier,,,,,,,,,1727.0,1753.0,"France, Paris",,,"{France:6},{Paris:3}",No,Painting/Sculpture
 Robert Delaunay,French,"École de Paris,Der Blaue Reiter (The Blue Rider),Société des Artistes Indépendants (Society of Independent Artists),La Ruche",{Orphism (Simultanism):32},"Paul Gauguin,Henri Rousseau,Georges Seurat,Pablo Picasso,Claude Monet,Pont-Aven School,","Aristarkh Lentulov,Der Blaue Reiter (The Blue Rider),Post-Painterly Abstraction,Abstract Expressionism,Paul Klee,August Macke,Marc Chagall,Wassily Kandinsky,Diego Rivera,",,,"Marc Chagall,Fernand Leger,Jean Metzinger,Roman Selsky,Margit Selska,Józef Pankiewicz,",1904.0,1939.0,"US, Germany, St. Louis, Washington DC, Chicago, Karlsruhe, IL, Munich, Paris, France, NY, Madrid, Spain, MO, Switzerland, Basel, New York City","Orphism:1909-1939,Post-Impressionism:1904-1906","{Orphism:30}, {Post-Impressionism:2}","{Karlsruhe:2},{Germany:3},{Munich:1},{Paris:2},{France:2},{Washington DC:1},{US:8},{New York City:5},{NY:5},{Madrid:1},{Spain:1},{Basel:1},{Switzerland:1},{St. Louis:1},{MO:1},{Chicago:1},{IL:1}",No,Painting/Sculpture
 Li Tang,Chinese,,{Northern Song Dynasty (960–1126):4},,,,,,1124.0,1124.0,"Taiwan, Taipei",Ink and wash painting:1124-1124,{Ink and wash painting:4},"{Taipei:1},{Taiwan:1}",No,Painting/Sculpture
@@ -92,7 +92,7 @@ Heinrich Aldegrever,,,"{German Renaissance:91},{Northern Renaissance:91},{Renais
 George Frederic Watts,,,"{Realism:1},{Academic art:1},{Symbolism:2}",,,,,,1866.0,1878.0,,,,,No,Painting/Sculpture
 Valentin Serov,Russian,Peredvizhniki (Society for Traveling Art Exhibitions),"{Modern art:2},{Impressionism:1},{Realism,Impressionism:218}",,"Fedir Krychevsky,Robert Falk,","Mikhail Larionov,","Ilya Repin,Imperial Academy of Arts, Saint Petersburg, Russia,","Mikhail Vrubel,",1880.0,1911.0,"Yerevan, Russia, Moscow, Saint Petersburg, Dnipro, Ukraine, Erevan, Armenia, Minsk, Taganrog, Belarus","Impressionism:1886-1911,Realism:1880-1911,Art Nouveau (Modern):1905-1910","{Impressionism:91}, {Realism:115}, {Art Nouveau (Modern):15}","{Moscow:60},{Russia:66},{Saint Petersburg:3},{Erevan:2},{Armenia:5},{Dnipro:1},{Ukraine:1},{Yerevan:3},{Minsk:2},{Belarus:2},{Taganrog:1}",No,Painting/Sculpture
 Wilhelm Lehmbruck,,,"{Naturalism:1},{Modern art:1}",,,,,,1913.0,1918.0,,,,,No,Painting/Sculpture
-Nicolas de Largillière,,,,,,,,,1686.0,1800.0,"France, Paris",,,"{France:3},{Paris:1}",No,Painting/Sculpture
+Nicolas de Largillière,,,,,,,,,1686.0,1746.0,"France, Paris",,,"{France:3},{Paris:1}",No,Painting/Sculpture
 Simon Bening,,,"{Dutch and Flemish Renaissance painting:22},{Northern Renaissance:22},{Renaissance:22}",,,,,,1525.0,1550.0,"Belgium, Bruges",,,"{Bruges:114},{Belgium:114}",No,Painting/Sculpture
 Anish Kapoor,"British,Indian",New British Sculpture,{Post-Minimalism:13},"Damien Hirst,",,,,,1981.0,2009.0,,"Post-Minimalism:1992-2009,Neo-Expressionism:1981-2009","{Post-Minimalism:7}, {Neo-Expressionism:7}",,Yes,Painting/Sculpture
 Georg Baselitz,German,Neue Wilde,{Neo-Expressionism:34},,,,,"Joseph Beuys,Gerhard Richter,",1963.0,2015.0,,Neo-Expressionism:1963-2015,{Neo-Expressionism:34},,Yes,Painting/Sculpture
@@ -129,7 +129,7 @@ Ambrogio Lorenzetti,Italian,Sienese School,"{Proto Renaissance,Gothic Art:18}","
 Rufino Tamayo,Mexican,,"{Expressionism,Surrealism,Muralism:21}",,"Pedro Coronel,","Helen Frankenthaler,",,,1924.0,1990.0,,"Expressionism:1924-1990,Surrealism:1959-1978,Cubism:1931-1955,Muralism:1955-1955","{Expressionism:15}, {Surrealism:4}, {Cubism:6}, {Muralism:1}",,,Painting/Sculpture
 George Caleb Bingham,American,,"{Luminism:1},{American Realism:1},{Realism:1},{Romanticism:49}",,,,,,1834.0,1876.0,"CA, Cincinnati, Missouri, MO, US, St. Louis, Washington DC, New York City, Los Angeles, MA, San Francisco, Norfolk, Hartford, Detroit, MI, San Marino, USA, Boston, VA, Los Angeles County Museum of Art, NY, Fort Worth, OH, United States, Kansas City","Romanticism:1837-1876,Naïve Art (Primitivism):1834-1876","{Romanticism:42}, {Naïve Art (Primitivism):46}","{Missouri:1},{United States:1},{St. Louis:11},{MO:13},{US:28},{Fort Worth:1},{Norfolk:1},{VA:1},{Cincinnati:1},{OH:1},{Los Angeles County Museum of Art:1},{Los Angeles:1},{CA:4},{Hartford:1},{Boston:2},{MA:2},{Kansas City:2},{Detroit:2},{MI:2},{San Marino:1},{New York City:2},{NY:2},{San Francisco:4},{Washington DC:2},{USA:1}",No,Painting/Sculpture
 Jan Toorop,Dutch,Tachtigers (the Eightiers),"{Art Nouveau:2},{Amsterdam Impressionism:1},{Symbolism:1},{Modern art:2},{Symbolism,Art Nouveau:38}",,"Egon Schiele,",,,"Piet Mondrian,",1883.0,1928.0,"Netherlands, Otterlo, Hague, Rotterdam, Paris, France, Amsterdam","Art Nouveau (Modern):1893-1909,Symbolism:1891-1928,Pointillism:1889-1889,Impressionism:1883-1887","{Art Nouveau (Modern):11}, {Symbolism:17}, {Pointillism:2}, {Divisionism:2}, {Impressionism:6}","{Netherlands:9},{Paris:1},{France:1},{Hague:1},{Otterlo:3},{Rotterdam:2},{Amsterdam:1}",No,Painting/Sculpture
-Martin van Meytens,,,,,,,,,1728.0,1851.0,,,,,No,Painting/Sculpture
+Martin van Meytens,,,,,,,,,1728.0,1770.0,,,,,No,Painting/Sculpture
 Robert Mapplethorpe,,,,,,,,,1980.0,1984.0,,,,,,Painting/Sculpture
 Adam Elsheimer,,,,,,,,,1605.0,1608.0,Germany,,,{Germany:1},No,Painting/Sculpture
 Duccio,Italian,Sienese School,{Proto Renaissance:135},,"Ambrogio Lorenzetti,Pietro Lorenzetti,",,,,1280.0,1318.0,"Hungary, Italy, Budapest, Florence",Proto Renaissance:1280-1318,"{XIII-XIV CenturiesItalian Painting:1}, {Gotic/ Altarpiece:1}, {Proto Renaissance:135}","{Budapest:1},{Hungary:1},{Florence:3},{Italy:3}",No,Painting/Sculpture
@@ -267,7 +267,7 @@ Jan Fyt,,,,,,,,,1640.0,1650.0,,,,,No,Painting/Sculpture
 John Thomson,,,,,,,,,,,"Canton, London, China, England",,,"{Canton:1},{China:1},{London:4},{England:4}",,Painting/Sculpture
 Giuseppe Cesari,,,,,,,,,1598.0,1613.0,,,,,No,Painting/Sculpture
 Raoul Dufy,French,Les Fauves,"{Post-Impressionism,Cubism:161}",,"Carlos Nadal,",,,,1899.0,1953.0,"London, Montpellier, CA, UK, Spain, Canada, Toronto, Switzerland, US, Chicago, Washington DC, IL, Australia, Los Angeles, Paris, Denmark, Zürich, Sydney, Russia, Saint Petersburg, Los Angeles County Museum of Art, France, NY, Madrid, Lyon, New York City","Post-Impressionism:1901-1953,Naïve Art (Primitivism):1905-1952,Impressionism:1899-1922,Fauvism:1906-1952,Cubism:1908-1922","{Post-Impressionism:64}, {Naïve Art (Primitivism):53}, {Impressionism:13}, {Fauvism:19}, {Cubism:21}","{Toronto:2},{Canada:2},{Montpellier:1},{France:11},{Los Angeles County Museum of Art:1},{Los Angeles:1},{CA:1},{US:11},{Paris:7},{Denmark:1},{Washington DC:1},{London:3},{UK:3},{Chicago:3},{IL:3},{Lyon:1},{Zürich:2},{Switzerland:2},{New York City:5},{NY:5},{Madrid:2},{Spain:2},{Sydney:1},{Australia:1},{Saint Petersburg:1},{Russia:1}",No,Painting/Sculpture
-Daniel Hopfer,,,"{German Renaissance:1},{Northern Renaissance:1},{Renaissance:1}",,,,,,1520.0,1684.0,,,,,No,Painting/Sculpture
+Daniel Hopfer,,,"{German Renaissance:1},{Northern Renaissance:1},{Renaissance:1}",,,,,,1520.0,1536.0,,,,,No,Painting/Sculpture
 Eustache Le Sueur,French,,{Baroque:34},,,,,,1635.0,1660.0,"US, Russia, Saint Petersburg, Paris, France, Hartford",Baroque:1635-1660,{Baroque:34},"{Paris:15},{France:15},{Saint Petersburg:1},{Russia:1},{Hartford:1},{US:1}",No,Painting/Sculpture
 Wu Bin,,,,,,,,,1615.0,1615.0,,,,,No,Painting/Sculpture
 Jean Lurçat,,,,,,,,,1901.0,1960.0,,,,,No,Painting/Sculpture
@@ -474,7 +474,7 @@ Dirck Hals,,,"{Dutch Golden Age:1},{Baroque:1}",,,,,,,,,,{Northern Netherlands S
 Leopoldo Méndez,,,,,,,,,1934.0,1951.0,,,,,No,Painting/Sculpture
 Diego Siloe,,,,,,,,,1544.0,1544.0,,Renaissance:1544-1544,{Renaissance:1},,No,Painting/Sculpture
 Giuseppe Pellizza da Volpedo,,,{Realism:1},,,,,,1895.0,1906.0,,,,,No,Painting/Sculpture
-Jan van Os,,,,,,,,,1769.0,1900.0,,,,,No,Painting/Sculpture
+Jan van Os,,,,,,,,,1769.0,1808.0,,,,,No,Painting/Sculpture
 Emanuel de Witte,,,,,,,,,1678.0,1678.0,,,,,No,Painting/Sculpture
 108,,,,,,,,,2008.0,2012.0,"Москва, Italy",,,"{Italy:1},{Москва:3}",Yes,Painting/Sculpture
 Alma Thomas,,,,,,,,,1972.0,1972.0,,,,,No,Painting/Sculpture
@@ -596,7 +596,7 @@ Jacob Gerritsz. Cuyp,,,,,,,,,1639.0,1639.0,,,,,No,Painting/Sculpture
 Spencer Gore,,,,,,,,,,,Richmond,,,{Richmond:2},,Painting/Sculpture
 Erastus Salisbury Field,,,,,,,,,1830.0,1840.0,"MA, United States",,,"{MA:1},{United States:1}",No,Painting/Sculpture
 Anne Hardy,,,,,,,,,2016.0,2016.0,,,,,Yes,Painting/Sculpture
-Franz von Matsch,,,,,,,,,1750.0,1908.0,,,,,No,Painting/Sculpture
+Franz von Matsch,,,,,,,,,1881.0,1908.0,,,,,No,Painting/Sculpture
 Domenico Maria Canuti,,,,,,,,,1669.0,1671.0,,,,,No,Painting/Sculpture
 Ralph Hedley,,,,,,,,,1888.0,1904.0,,,,,No,Painting/Sculpture
 Thomas Sidney Cooper,,,,,,,,,,,Canterbury,,,{Canterbury:1},,Painting/Sculpture
@@ -1110,7 +1110,7 @@ Thomas Heming,,,,,,,,,1750.0,1751.0,"London, England",,,"{London:1},{England:1}"
 Sung Soo Lim,,"Cheongju University. Korea. B.F.A., Painting",,,,,,,,,,,,,,Painting/Sculpture
 Cássio Vasconcellos,,,,,,,,,1987.0,2000.0,,,,,Yes,Painting/Sculpture
 Stephanie Rond,,,,,,,,,,,"Ohio, St, Oak St, USA, Columbus, Columbus Ohio",,,"{Oak St:2},{Columbus:12},{Ohio:13},{USA:15},{St:2},{Columbus Ohio:2}",,Painting/Sculpture
-Charles Cressent,,,,,,,,,1735.0,1933.0,"Paris, France",,,"{Paris:7},{France:6}",No,Painting/Sculpture
+Charles Cressent,,,,,,,,,1735.0,1768.0,"Paris, France",,,"{Paris:7},{France:6}",No,Painting/Sculpture
 Liu Xiaodong,,,,,,,,,1998.0,2012.0,,,,,Yes,Painting/Sculpture
 Taddeo Crivelli,,,,,,,,,,,"Italy, Ferrara",,,"{Ferrara:22},{Italy:22}",,Painting/Sculpture
 William James Bennett,,,,,,,,,1834.0,1834.0,,,,,No,Painting/Sculpture
@@ -2133,7 +2133,7 @@ Jong Gu Lee,,"1986-1988 Inha Uinversity. Incheon, Korea. M.F.A., Arts Education.
 Anna Maria Maiolino,,,,,,,,,1966.0,1980.0,,,,,,Design/Photography/Miscellaneous
 Nak Beom Kho,,"Hongik University. Seoul, Korea. B.F.A., M.F.A., Painting.",,,,,,,,,,,,,,Design/Photography/Miscellaneous
 Harrison Begay,,,,,,,,,1970.0,1971.0,,,,,No,Design/Photography/Miscellaneous
-Madeleine Vionnet,,,,,,,,,1264.0,1938.0,"Paris, France",,,"{Paris:1},{France:2}",No,Design/Photography/Miscellaneous
+Madeleine Vionnet,,,,,,,,,1896.0,1938.0,"Paris, France",,,"{Paris:1},{France:2}",No,Design/Photography/Miscellaneous
 Dong Hun Sung,,"Chungang University. Seoul, Korea. B.F.A., Sculpture.",,,,,,,,,,,,,,Design/Photography/Miscellaneous
 Juan de Borgoña,,,"{Northern Renaissance:1},{Renaissance:1}",,,,,,1519.0,1521.0,,,,,No,Design/Photography/Miscellaneous
 Halston,,,,,,,,,1958.0,1968.0,"New York, N.Y., Scotland, USA, United States",,,"{USA:4},{New York:2},{United States:1},{Scotland:1},{N.Y.:1}",No,Design/Photography/Miscellaneous
@@ -2634,7 +2634,7 @@ Stefano da Verona,,,,,,,,,1430.0,1435.0,"Lombardy, Italy",,,"{Lombardy:1},{Italy
 Johann Gregorius Höroldt,,,,,,,,,1725.0,1730.0,"Germany, Meissen, Dresden",,,"{Dresden:2},{Germany:6},{Meissen:4}",No,
 Ernesto de Fiori,,,,,,,,,1925.0,1944.0,,,,,No,
 Gérard Audran,,,,,,,,,,,"France, Paris",,,"{France:5},{Paris:1}",,
-Rodolfo Bernardelli,,,,,,,,,1801.0,1930.0,,,,,No,
+Rodolfo Bernardelli,,,,,,,,,1872.0,1930.0,,,,,No,
 Mark Peiser,,,,,,,,,1975.0,1985.0,,,,,,
 Tsubaki Chinzan,,,,,,,,,1852.0,1852.0,"Japan, Tokyo",,,"{Tokyo:1},{Japan:1}",No,
 Wijnand Nuijen,,,,,,,,,,,"Hague, Amsterdam",,,"{Hague:2},{Amsterdam:1}",,
@@ -2922,7 +2922,7 @@ Petrus Van der Velden,,,,,,,,,,,"New Zealand, Wellington",,,"{Wellington:1},{New
 William Louis Sonntag Sr.,,,,,,,,,1870.0,1870.0,,,,,No,
 Jean-Baptiste Huet,,,,,,,,,1770.0,1808.0,"Paris, France",,,"{Paris:1},{France:1}",No,
 Eugène Lami,,,,,,,,,1881.0,1881.0,,,,,No,
-Henrique Bernardelli,,,,,,,,,1858.0,2015.0,,,,,Yes,
+Henrique Bernardelli,,,,,,,,,1858.0,1936.0,,,,,Yes,
 Charles Clifford,,,,,,,,,,,Spain,,,{Spain:4},,
 Jehan Georges Vibert,French,,{Academic Art:39},,,,,,1860.0,1897.0,"NY, Buffalo, US","Romanticism:1875-1875,Academicism:1860-1897,Realism:1862-1865","{Romanticism:9}, {Academicism:25}, {Realism:5}","{Buffalo:1},{NY:1},{US:1}",No,
 Raphaël Collin,,,,,,,,,1880.0,1915.0,,,,,No,
@@ -3205,7 +3205,7 @@ Futura 2000,American,,{Street art:10},,,,,,1980.0,2014.0,,Street art:1980-2009,{
 Jacobus Houbraken,,,,,,,,,,,"Leiden, Northern Netherlands, Amsterdam",,,"{Amsterdam:230},{Leiden:2},{Northern Netherlands:1}",,
 Henri Rivière,,,,,,,,,1888.0,1902.0,,,,,No,
 Nardo di Cione,,,,,,,,,1350.0,1357.0,Italy,,,{Italy:2},No,
-Augusto Stahl,,,,,,,,,1860.0,1969.0,,,,,No,
+Augusto Stahl,,,,,,,,,1860.0,1877.0,,,,,No,
 Hablot Knight Browne,,,,,,,,,,,London,,,{London:1},,
 Louis Le Breton,,,,,,,,,1846.0,1846.0,,,,,No,
 Ahmed Mater,,,,,,,,,2009.0,2012.0,Saudi Arabia,,,{Saudi Arabia:2},Yes,
@@ -3485,7 +3485,7 @@ Patricia Piccinini,,,,,,,,,2002.0,2008.0,,,,,Yes,
 Marino Marini,Italian,,{Expressionism:18},,,,,,1933.0,1978.0,,Expressionism:1934-1978,{Expressionism:18},,No,
 Adel Abdessemed,,,"{Conceptual art:1},{Contemporary art:1}",,,,,,2006.0,2013.0,Algeria,,,{Algeria:4},Yes,
 Tomie Ohtake,,,,,,,,,1913.0,2015.0,,,,,Yes,
-Anton von Maron,,,,,,,,,1750.0,1851.0,,,,,No,
+Anton von Maron,,,,,,,,,1753.0,1851.0,,,,,No,
 Piero del Pollaiolo,,,,,,,,,,,Italy,,,{Italy:1},,
 Claude Gillot,,,{Rococo:1},,,,,,1710.0,1710.0,,,,,No,
 Sergey Lvovich Levitsky,,,,,,,,,1850.0,1867.0,,,,,No,
@@ -7183,7 +7183,7 @@ William Mulready,,,{Romanticism:2},,,,,,,,London,,,{London:1},,
 Louis Jobin,,,{Modern art:1},,,,,,,,"Canada, Quebec",,,"{Quebec:1},{Canada:2}",,
 Naum Gabo,"Russian,Jewish","Abstraction-Création,St Ives School","{Modern art:1},{Constructivism,Kinetic art:16}",,,,,,1916.0,1965.0,"London, UK","Kinetic Art:1919-1965,Constructivism:1916-1930","{Kinetic Art:12}, {Constructivism:4}","{London:5},{UK:5}",No,
 Thomas Webb & Sons,,,{Modern art:1},,,,,,1860.0,1920.0,England,,,{England:1},No,
-Pierre Auguste Renoir,French,,"{Modern art:3},{Impressionism:1408}","Gustave Courbet,Camille Pissarro,Edouard Manet,Eugene Delacroix,Camille Corot,Edgar Degas,Francois Boucher,Raphael,Jean Auguste Dominique Ingres,Antoine Watteau,Francisco Goya,","Childe Hassam,Mary Cassatt,Paul Cezanne,Henri Matisse,Pablo Picasso,Marjorie Acker Phillips,",,"Charles Gleyre,","Alfred Sisley,Claude Monet,Amedeo Modigliani,Frederic Bazille,Camille Pissarro,Suzanne Valadon,Gustave Caillebotte,",1111.0,1919.0,"Iran, Prague, Kunsthalle, Northampton, Canada, Toronto, Winterthur, Chicago, Washington DC, Portugal, Pittsburgh, Glasgow, MA, San Francisco, MI, Boston, Czech Republic, Dublin, Argentina, VA, RI, Munich, Japan, NY, MD, Lyon, Oxford, UK, Switzerland, Lisbon, Sao Paulo, Otterlo, Baltimore, Tehran, Detroit, Buffalo, Stockholm, ME, Basel, Zürich, Houston, Toledo, Saint Petersburg, Stuttgart, France, OH, Hiroshima, Galleria, Moscow, Southampton, US, Germany, Netherlands, Italy, Versailles, Paris, Philadelphia, Providence, Cologne, Berlin, Moderna, Russia, Serbia, Aberdeen, Main, New York City, Hartford, London, CA, Norway, Spain, PA, MN, Williamstown, Ottawa, IL, Cambridge, Essen, Minneapolis, Milan, Tokyo, Brazil, Los Angeles, Dresden, Portland, Hamburg, Norfolk, Nationalmuseum, Sweden, Ireland, Belgrade, Frankfurt, Oslo, Los Angeles County Museum of Art, Madrid, MFAH","Impressionism:1850-1919,Realism:1858-1896,Orientalism:1870-1895,Post-Impressionism:1885-1886,Japonism:1882-1882","{Impressionism:1377}, {Realism:24}, {Orientalism:3}, {Post-Impressionism:1}, {Japonism:1}","{Williamstown:18},{MA:25},{US:86},{San Francisco:3},{CA:4},{Paris:59},{France:62},{Belgrade:2},{Serbia:2},{Toronto:2},{Canada:3},{PA:22},{Galleria:1},{Moderna:1},{Milan:1},{Italy:1},{New York City:6},{NY:8},{Hiroshima:1},{Japan:3},{Providence:1},{RI:1},{Southampton:1},{UK:10},{Buffalo:2},{Hartford:2},{Los Angeles County Museum of Art:1},{Los Angeles:2},{Detroit:1},{MI:1},{London:4},{Tehran:1},{Iran:1},{Ottawa:1},{Glasgow:1},{Winterthur:5},{Switzerland:8},{Saint Petersburg:10},{Russia:12},{Lyon:1},{Munich:1},{Germany:10},{Versailles:1},{Philadelphia:7},{MFAH:2},{Houston:2},{Baltimore:1},{MD:1},{Brazil:3},{Chicago:10},{IL:10},{Oslo:1},{Norway:1},{Frankfurt:2},{Main:2},{Dublin:1},{Ireland:1},{OH:2},{Cambridge:7},{Aberdeen:1},{Tokyo:2},{Berlin:1},{Boston:1},{Norfolk:1},{VA:1},{Washington DC:5},{Minneapolis:1},{MN:1},{Sao Paulo:1},{Oxford:1},{Zürich:2},{Argentina:1},{Toledo:1},{Nationalmuseum:3},{Stockholm:3},{Sweden:3},{Moscow:2},{Pittsburgh:1},{Prague:2},{Czech Republic:1},{Otterlo:1},{Netherlands:1},{Madrid:1},{Spain:1},{Stuttgart:4},{Portland:1},{ME:1},{Kunsthalle:1},{Hamburg:2},{Lisbon:1},{Portugal:1},{Northampton:1},{Dresden:1},{Basel:1},{Cologne:1},{Essen:1}",No,
+Pierre Auguste Renoir,French,,"{Modern art:3},{Impressionism:1408}","Gustave Courbet,Camille Pissarro,Edouard Manet,Eugene Delacroix,Camille Corot,Edgar Degas,Francois Boucher,Raphael,Jean Auguste Dominique Ingres,Antoine Watteau,Francisco Goya,","Childe Hassam,Mary Cassatt,Paul Cezanne,Henri Matisse,Pablo Picasso,Marjorie Acker Phillips,",,"Charles Gleyre,","Alfred Sisley,Claude Monet,Amedeo Modigliani,Frederic Bazille,Camille Pissarro,Suzanne Valadon,Gustave Caillebotte,",1861.0,1919.0,"Iran, Prague, Kunsthalle, Northampton, Canada, Toronto, Winterthur, Chicago, Washington DC, Portugal, Pittsburgh, Glasgow, MA, San Francisco, MI, Boston, Czech Republic, Dublin, Argentina, VA, RI, Munich, Japan, NY, MD, Lyon, Oxford, UK, Switzerland, Lisbon, Sao Paulo, Otterlo, Baltimore, Tehran, Detroit, Buffalo, Stockholm, ME, Basel, Zürich, Houston, Toledo, Saint Petersburg, Stuttgart, France, OH, Hiroshima, Galleria, Moscow, Southampton, US, Germany, Netherlands, Italy, Versailles, Paris, Philadelphia, Providence, Cologne, Berlin, Moderna, Russia, Serbia, Aberdeen, Main, New York City, Hartford, London, CA, Norway, Spain, PA, MN, Williamstown, Ottawa, IL, Cambridge, Essen, Minneapolis, Milan, Tokyo, Brazil, Los Angeles, Dresden, Portland, Hamburg, Norfolk, Nationalmuseum, Sweden, Ireland, Belgrade, Frankfurt, Oslo, Los Angeles County Museum of Art, Madrid, MFAH","Impressionism:1850-1919,Realism:1858-1896,Orientalism:1870-1895,Post-Impressionism:1885-1886,Japonism:1882-1882","{Impressionism:1377}, {Realism:24}, {Orientalism:3}, {Post-Impressionism:1}, {Japonism:1}","{Williamstown:18},{MA:25},{US:86},{San Francisco:3},{CA:4},{Paris:59},{France:62},{Belgrade:2},{Serbia:2},{Toronto:2},{Canada:3},{PA:22},{Galleria:1},{Moderna:1},{Milan:1},{Italy:1},{New York City:6},{NY:8},{Hiroshima:1},{Japan:3},{Providence:1},{RI:1},{Southampton:1},{UK:10},{Buffalo:2},{Hartford:2},{Los Angeles County Museum of Art:1},{Los Angeles:2},{Detroit:1},{MI:1},{London:4},{Tehran:1},{Iran:1},{Ottawa:1},{Glasgow:1},{Winterthur:5},{Switzerland:8},{Saint Petersburg:10},{Russia:12},{Lyon:1},{Munich:1},{Germany:10},{Versailles:1},{Philadelphia:7},{MFAH:2},{Houston:2},{Baltimore:1},{MD:1},{Brazil:3},{Chicago:10},{IL:10},{Oslo:1},{Norway:1},{Frankfurt:2},{Main:2},{Dublin:1},{Ireland:1},{OH:2},{Cambridge:7},{Aberdeen:1},{Tokyo:2},{Berlin:1},{Boston:1},{Norfolk:1},{VA:1},{Washington DC:5},{Minneapolis:1},{MN:1},{Sao Paulo:1},{Oxford:1},{Zürich:2},{Argentina:1},{Toledo:1},{Nationalmuseum:3},{Stockholm:3},{Sweden:3},{Moscow:2},{Pittsburgh:1},{Prague:2},{Czech Republic:1},{Otterlo:1},{Netherlands:1},{Madrid:1},{Spain:1},{Stuttgart:4},{Portland:1},{ME:1},{Kunsthalle:1},{Hamburg:2},{Lisbon:1},{Portugal:1},{Northampton:1},{Dresden:1},{Basel:1},{Cologne:1},{Essen:1}",No,
 Markus Prachensky,,,{Contemporary art:1},,,,,,,,,,,,,
 Kwon,,,{Contemporary art:1},,,,,,1987.0,1987.0,,,,,,
 Peter Randall-Page,,,{Contemporary art:1},,,,,,,,,,,,,
@@ -12941,7 +12941,7 @@ Joseph Johnson,,,,,,,,,,,England,,,{England:3},,
 Maruyama Ōzui,,,,,,,,,1799.0,1799.0,,,,,No,
 Begović & Štimac,,,,,,,,,2014.0,2014.0,"Croatia, Zagreb",,,"{Croatia:2},{Zagreb:2}",Yes,
 Henry Morgan & Co.,,,,,,,,,1880.0,1890.0,,,,,No,
-Matsumura Keibun,,,,,,,,,1650.0,1868.0,,,,,No,
+Matsumura Keibun,,,,,,,,,1799.0,1868.0,,,,,No,
 Su Hanchen,,,,,,,,,1172.0,1172.0,,,,,No,
 Kim Myeong-guk,,,,,,,,,1600.0,1670.0,,,,,No,
 Frances Mecia Campbell,,,,,,,,,1807.0,1807.0,,,,,No,
@@ -13635,7 +13635,7 @@ Joseph Swan,,,,,,,,,1881.0,1881.0,,,,,No,
 Yoshimura Seiji,,,,,,,,,,,Japan,,,{Japan:2},,
 Yamamoto Hiroyuki,,,,,,,,,,,Japan,,,{Japan:2},,
 After William Henry Bartlett,,,,,,,,,1840.0,1840.0,,,,,No,
-Federica Galli,,,,,,,,,1872.0,2006.0,"Trentino, Italy, Venice, Umbria, Piemonte, Milan, Carasco, Sardinia",,,"{Venice:41},{Milan:13},{Italy:60},{Sardinia:1},{Carasco:1},{Umbria:1},{Trentino:1},{Piemonte:2}",Yes,
+Federica Galli,,,,,,,,,1952.0,2006.0,"Trentino, Italy, Venice, Umbria, Piemonte, Milan, Carasco, Sardinia",,,"{Venice:41},{Milan:13},{Italy:60},{Sardinia:1},{Carasco:1},{Umbria:1},{Trentino:1},{Piemonte:2}",Yes,
 Charles Cottet,French,Bande Noir (Les Nubians),{Post-Impressionism:19},,,,,,1883.0,1913.0,"France, Quimper","Post-Impressionism:1892-1913,Expressionism:1893-1897","{Post-Impressionism:16}, {Expressionism:2}","{Quimper:1},{France:1}",No,
 Mosè Bianchi,,,,,,,,,1865.0,1880.0,,,,,No,
 Eberhard Cornelis Rahms,,,,,,,,,,,"Utrecht, Netherlands",,,"{Utrecht:3},{Netherlands:2}",,
@@ -13738,7 +13738,7 @@ Joseph Pierre Buc'hoz,,,,,,,,,1776.0,1776.0,,,,,No,
 YAMADA Kisaku,,,,,,,,,1932.0,1932.0,,,,,No,
 ENOMOTO Chikatoshi,,,,,,,,,1932.0,1932.0,,,,,No,
 Johann Friedrich Tielker,,,,,,,,,1798.0,1798.0,,,,,No,
-John Wilson,,,,,,,,,1848.0,2002.0,,,,,Yes,
+John Wilson,,,,,,,,,1985.0,2002.0,,,,,Yes,
 Orshihin Darambazar,,,,,,,,,1988.0,1988.0,,,,,,
 Anna Letycia,,,,,,,,,1961.0,1961.0,,,,,No,
 Meno Haas,,,,,,,,,1800.0,1800.0,,,,,No,
@@ -15627,7 +15627,6 @@ John Humphreys Johnston,,,,,,,,,1895.0,1895.0,,,,,No,
 Gillis van Tilborch,,,,,,,,,1650.0,1675.0,,,,,No,
 Albert Anker,Swiss,,{Realism:104},,,,,,1858.0,1910.0,,"Realism:1861-1910,Academicism:1858-1866","{Realism:100}, {Impressionism:2}, {Academicism:3}",,No,
 Will Barnet,,,,,,,,,,,,,,,,
-François Pascal Simon Gérard,,,,,,,,,1804.0,1804.0,,,,,No,
 Alessandro Ciccarelli,,,,,,,,,1844.0,1844.0,,,,,No,
 Valeriano Bécquer,,,,,,,,,1856.0,1862.0,Spain,,,{Spain:2},No,
 Adnan Coker,Turkish,,{Abstract Art:28},,,,,,1968.0,2008.0,,"Abstract Art:1992-2008,Abstract Expressionism:1968-1968","{Abstract Art:25}, {Abstract Expressionism:3}",,Yes,
@@ -18430,7 +18429,6 @@ Taalaybek Usubaliev,,,{Contemporary Art:1},,,,,,2015.0,2015.0,Kyrgyzstan,,,{Kyrg
 Goya Studio,,,,,,,,,2011.0,2011.0,,,,,Yes,
 Marianne Loir,,,,,,,,,,,,,{Rococo:1},,,
 Massimo Campigli,,,,,,,,,1928.0,1928.0,,,,,No,
-Baron François-Pascal-Simon Gérard (French,,,,,,,,,,,"Paris, France",,,"{Paris:1},{France:1}",,
 Jan Maurits Quinkhardt,,,,,,,,,1724.0,1724.0,,,,,No,
 Ottone Rosai,Italian,Lacerba,"{Expressionism,Futurism:31}",,,,,,1914.0,1956.0,,"Expressionism:1919-1956,Cubism:1914-1956,Neoclassicism:1922-1922,Futurism:1914-1914","{Expressionism:30}, {Cubism:7}, {Neoclassicism:1}, {Futurism:1}",,No,
 Simplicio Rodriges de Sá (Atribuído),,,,,,,,,1828.0,1830.0,,,,,No,
@@ -19221,7 +19219,7 @@ Sir Lawrence Alma Tadema,Dutch,,"{Romanticism,Neoclassicism:198}",,"Mikhail Vrub
 Franz Richard Unterberger,"Austrian,Belgian",,{Romanticism:34},,,,,,1860.0,1900.0,,Romanticism:1860-1900,{Romanticism:34},,No,
 Ivan Kramskoy,Russian,Peredvizhniki (Society for Traveling Art Exhibitions),{Realism:157},,,"Ilya Repin,",,"Mykola Murashko,",1860.0,1887.0,"Russia, Moscow, Saint Petersburg, Kyiv, Estonia, Ukraine, Voronezh, Polenovo, Tallinn, Samara",Realism:1860-1887,{Realism:157},"{Moscow:40},{Russia:50},{Voronezh:6},{Saint Petersburg:1},{Tallinn:1},{Estonia:1},{Kyiv:1},{Ukraine:1},{Polenovo:1},{Samara:1}",No,
 Carolus Duran,French,Société Japonaise du Jinglar,{Realism:83},"Diego Velazquez,","Gustave Courbet,","John Singer Sargent,",,"Henri Fantin-Latour,Edouard Manet,",1859.0,1917.0,"US, Russia, Saint Petersburg, France, Bordeaux, Detroit, MI","Realism:1859-1917,Impressionism:1870-1899","{Realism:82}, {Impressionism:4}","{Bordeaux:1},{France:1},{Saint Petersburg:2},{Russia:2},{Detroit:1},{MI:1},{US:1}",No,
-John Atkinson Grimshaw,British,,"{Romanticism,Aestheticism:144}","autumn,streets-and-squares,lonely figures,houses-and-buildings,boats-and-ships,moles-and-embankments,night,streets-and-squares,roads-and-vehicles,boats-and-ships,twilight-and-night,moles-and-embankments,Glasgow,streets-and-squares,twilight-and-night,London,lanterns,couples,rivers-and-waterfalls,London,autumn,streets-and-squares,houses-and-buildings,lonely figures,streets-and-squares,roads-and-vehicles,boats-and-ships,twilight-and-night,moles-and-embankments,lanterns,houses-and-buildings,roads-and-vehicles,lonely figures,night,rivers-and-waterfalls,boats-and-ships,twilight-and-night,London,allegories-and-symbols,female-nude,flying,Greek-and-Roman-Mythology,Endymion,female-portraits,children portraits,rivers-and-waterfalls,boats-and-ships,moles-and-embankments,streets-and-squares,roads-and-vehicles,twilight-and-night,moles-and-embankments,gardens-and-parks,leisure-and-sleep,lakes-and-ponds,mountains,roads-and-vehicles,mother-and-child,lonely figures,night,roads-and-vehicles,cliffs-and-rocks,night,castles-and-fortresses,night,gardens-and-parks,villas-and-residences,mountains,","Thyssen-Bornemisza Museum, Madrid, Spain,Private Collection,Philadelphia Museum of Art, Philadelphia, PA, US,",,,"Artists2/John Atkinson Grimshaw/Golden Light 1893.jpg,Artists2/John Atkinson Grimshaw/Golden Eve 1892.jpg,Artists2/John Atkinson Grimshaw/Evening Whitby Harbour 1893.jpg,Artists2/John Atkinson Grimshaw/Canny Glasgow 1887.jpg,Artists2/John Atkinson Grimshaw/Blackman Street London 1885.jpg,Artists2/John Atkinson Grimshaw/Battersea Bridge 1885.jpg,Artists2/John Atkinson Grimshaw/An Autumn Idyll 1885.jpg,Artists2/John Atkinson Grimshaw/Humber Docks Hull 1884.jpg,Artists2/John Atkinson Grimshaw/A Lane In Headingley Leeds 1881.jpg,Artists2/John Atkinson Grimshaw/Nightfall On The Thames 1880.jpg,Artists2/John Atkinson Grimshaw/Spirit Of The Night 1879.jpg,Artists2/John Atkinson Grimshaw/Endymion On Mount Latmus 1879.jpg,Artists2/John Atkinson Grimshaw/Blue Belle 1877.jpg,Artists2/John Atkinson Grimshaw/Whitby Docks 1876.jpg,Artists2/John Atkinson Grimshaw/Liverpool From Wapping 1875.jpg,Artists2/John Atkinson Grimshaw/In The Pleasaunce 1875.jpg,Artists2/John Atkinson Grimshaw/The Heron S Haunt 1874.jpg,Artists2/John Atkinson Grimshaw/A Moonlit Lane 1874.jpg,Artists2/John Atkinson Grimshaw/Under The Harvest Moon 1872.jpg,Artists2/John Atkinson Grimshaw/Full Moon Behind Cirrus Cloud From The Roundhay Park Castle Battlements 1872.jpg,Artists2/John Atkinson Grimshaw/Evening Knostrop Old Hall 1870.jpg,Artists2/John Atkinson Grimshaw/Bowder Stone Borrowdale.jpg,",,,"Spain, Madrid, UK, Preston",,"{Romanticism:104}, {Impressionism:27}, {Symbolism:13}","{Madrid:1},{Spain:1},{Preston:1},{UK:1}",,
+John Atkinson Grimshaw,British,,"{Romanticism,Aestheticism:144}","autumn,streets-and-squares,lonely figures,houses-and-buildings,boats-and-ships,moles-and-embankments,night,streets-and-squares,roads-and-vehicles,boats-and-ships,twilight-and-night,moles-and-embankments,Glasgow,streets-and-squares,twilight-and-night,London,lanterns,couples,rivers-and-waterfalls,London,autumn,streets-and-squares,houses-and-buildings,lonely figures,streets-and-squares,roads-and-vehicles,boats-and-ships,twilight-and-night,moles-and-embankments,lanterns,houses-and-buildings,roads-and-vehicles,lonely figures,night,rivers-and-waterfalls,boats-and-ships,twilight-and-night,London,allegories-and-symbols,female-nude,flying,Greek-and-Roman-Mythology,Endymion,female-portraits,children portraits,rivers-and-waterfalls,boats-and-ships,moles-and-embankments,streets-and-squares,roads-and-vehicles,twilight-and-night,moles-and-embankments,gardens-and-parks,leisure-and-sleep,lakes-and-ponds,mountains,roads-and-vehicles,mother-and-child,lonely figures,night,roads-and-vehicles,cliffs-and-rocks,night,castles-and-fortresses,night,gardens-and-parks,villas-and-residences,mountains,","Thyssen-Bornemisza Museum, Madrid, Spain,Private Collection,Philadelphia Museum of Art, Philadelphia, PA, US,",,,,,,"Spain, Madrid, UK, Preston",,"{Romanticism:104}, {Impressionism:27}, {Symbolism:13}","{Madrid:1},{Spain:1},{Preston:1},{UK:1}",,
 Henri Fantin Latour,French,Société Japonaise du Jinglar,"{Realism,Symbolism:289}",,,,,"James McNeill Whistler,Edouard Manet,Carolus-Duran,",1853.0,1904.0,"London, CA, UK, Gothenburg, Canada, MO, Roubaix, Switzerland, US, Chicago, Andover, St. Louis, Grenoble, Ottawa, IL, Cambridge, York, Los Angeles, Brussels, Italy, MA, Paris, Florence, Zürich, Belgium, Sweden, Russia, Saint Petersburg, Los Angeles County Museum of Art, France, NY, Lyon, Aberdeen, Rouen, New York City","Realism:1853-1904,Symbolism:1862-1904","{Realism:255}, {Symbolism:34}","{Roubaix:3},{France:18},{Paris:12},{Saint Petersburg:8},{Russia:8},{Florence:1},{Italy:1},{Andover:1},{MA:1},{US:8},{London:2},{UK:7},{Ottawa:1},{Canada:1},{Aberdeen:2},{New York City:1},{NY:1},{Chicago:3},{IL:3},{Rouen:1},{Belgium:2},{Brussels:1},{Lyon:1},{York:1},{St. Louis:2},{MO:2},{Gothenburg:1},{Sweden:1},{Cambridge:1},{Los Angeles County Museum of Art:1},{Los Angeles:1},{CA:1},{Zürich:1},{Switzerland:1},{Grenoble:1}",No,
 Bertalan Szekely,"Hungarian,Romanian",,{Romanticism:10},,,,,,1860.0,1903.0,"Hungary, Budapest","Romanticism:1860-1903,Realism:1890-1890","{Romanticism:9}, {Realism:1}","{Budapest:2},{Hungary:2}",No,
 Aleksey Ivanovich Korzukhin,Russian,Peredvizhniki (Society for Traveling Art Exhibitions),{Realism:44},,,,,,1850.0,1893.0,,Realism:1850-1893,{Realism:44},,No,
@@ -20724,3 +20722,4 @@ Georges de La Tour,French,Caravaggisti,{Baroque:61},"Caravaggio,",,,,,1615.0,165
 József Rippl-Rónai,Hungarian,Les Nabis,"{Post-Impressionism:1},{Art Nouveau:1},{Modern art:2},{Post-Impressionism,Secession:34}",,,,,,1892.0,1923.0," Hungary, Pécs,Paris, Neuilly, France","Art Nouveau (Modern):1892-1923,Post-Impressionism:1892-1910,Symbolism:1892-1923","{Art Nouveau (Modern):15}, {Cloisonnism:2}, {Post-Impressionism:10}, {Symbolism:7}","{Neuilly:1},{Paris:2},{Pécs:2},{Hungary:2},{France:1}",No,Painting/Sculpture
 László Moholy-Nagy,Hungarian,"Bauhaus,Degenerate art","{Bauhaus style:1},{Good Design:1},{Modern art:1},{Constructivism:73}","Man Ray,",,,,"Kazimir Malevich,",1919.0,1946.0," Germany, Denmark, Hague, Paris,Netherlands, France,Berlin","Dada:1919-1946,Constructivism:1920-1946,Kinetic Art:1930-1936,Expressionism:1919-1920","{Dada:33}, {Constructivism:34}, {Kinetic Art:3}, {Expressionism:2}","{Berlin:3},{Germany:3},{Hague:1},{Netherlands:1},{Paris:1},{France:1},{Denmark:1}",No,
 Jean-Léon Gérôme,French,,"{Academic Art,Romanticism:223}",,"Jean Lecomte du Nouÿ,","Fernand Leger,Eugeniusz Zak,Aristide Maillol,Eugène Burnand,Jean Lecomte du Nouÿ,","Charles Gleyre,","Abbott Handerson Thayer,",1840.0,1903.0," Germany, Kunsthalle, OH, MA, Aberdeen, France,CA, Russia, Baltimore,France, PA, Chantilly, Pittsburgh, Paris, MO, Hamburg, Phoenix, San Francisco, San Simeon, Warsaw, NY, Versailles, US, St. Louis, Egypt, Saint Petersburg, New York City, NJ, IL, MD, Poland, UK, Chicago, Williamstown, Boston","Academicism:1845-1902,Orientalism:1840-1900,Romanticism:1869-1903","{Academicism:92}, {Orientalism:104}, {Romanticism:26}, {Classicism:1}, {Neoclassicism:1}","{France:12},{Egypt:1},{New York City:4},{NY:4},{US:22},{Chicago:1},{IL:1},{Paris:6},{Pittsburgh:1},{PA:1},{Aberdeen:1},{UK:1},{San Francisco:2},{CA:2},{Baltimore:6},{MD:6},{Saint Petersburg:4},{Russia:4},{Warsaw:1},{Poland:1},{Versailles:1},{Phoenix:1},{Williamstown:2},{MA:3},{Boston:1},{NJ:1},{San Simeon:1},{Kunsthalle:2},{Hamburg:4},{Germany:2},{OH:1},{Chantilly:1},{St. Louis:2},{MO:2}",No,
+François Pascal Simon Gérard,,,,,,,,,1804.0,1804.0,"Paris, France",,,"{Paris:1},{France:1}",No,
