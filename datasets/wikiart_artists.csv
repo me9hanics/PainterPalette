@@ -1455,8 +1455,6 @@ Georges Hugnet,"Dada, Surrealism",Dada,"{Dada:2},{Surrealism:48}",50,Paris,1904.
 Hannah Hoch,Dada,Dada,{Dada:13},13,Gotha,1889.0,1978.0,Berlin,female,Germany,"photographer, artist, painter, graphic artist, drawer, collagist","['The Hague', 'Rome', 'Berlin']",[]
 John Heartfield,"Dada, Surrealism",Dada,"{Dada:40},{Surrealism:1}",41,United Kingdom,1891.0,1968.0,East Berlin,male,Germany,"collagist, designer, publisher, graphic artist, painter, poster artist, photographer",[],[]
 Kurt Schwitters,"Dada, Expressionism",Dada,"{Dada:38},{Expressionism:1}",39,Hanover,1887.0,1948.0,Kendal,male,Kingdom of France,"photographer, writer, poet, graphic designer, painter, sculptor, designer","['Hjertøya', 'Hanover', 'Lysaker', 'Lake District']",[]
-Leonid Sejka,"Dada, Surrealism",Surrealism,"{Dada:7},{Surrealism:13}",20,,,,,,,,,
-Leonid Šejka,"Dada, Neo-Dada, Renaissance, Surrealism",Surrealism,"{Dada:2},{Neo-Dada:2},{Renaissance:1},{Surrealism:8}",13,Belgrade,1932.0,1970.0,,male,Yugoslavia,"painter, architect",[],[]
 Suzanne Duchamp,"Dada, Expressionism",Dada,"{Dada:8},{Expressionism:2}",10,Blainville-Crevon,1889.0,1963.0,Paris,female,France,painter,[],[]
 Anthony Sims,"Digital Art, Neo-Expressionism, Neo-Pop Art",Contemporary,"{Digital Art:1},{Neo-Expressionism:15},{Neo-Pop Art:5}",21,Southaven,1998.0,,,male,United States of America,painter,[],[]
 Beeple,Digital Art,Digital Art,{Digital Art:32},32,Fond du Lac,1981.0,,,male,United States of America,"graphic designer, visual artist, VJ, NFT artist",[],[]
@@ -3202,3 +3200,4 @@ Vudon Baklytsky,Unknown,Soviet Nonconformist Art,{Unknown:46},46,,,,,,,,,
 Wolfgang Tillmans,Unknown,Contemporary,{Unknown:9},9,Remscheid,1968.0,,,male,Germany,"photographer, printmaker","['New York City', 'Berlin', 'London']",['New York City:1996-1996']
 Wu Daozi,Unknown,Tang Dynasty (618–907),{Unknown:8},8,Chang'an,680.0,740.0,Chang'an,male,Tang dynasty,painter,[],[]
 Olowe of Ise,Yoruba,Native Art,{Yoruba:13},13,,1873.0,1938.0,,male,Nigeria,"sculptor, artist",[],[]
+Leonid Šejka," Neo-Dada,Dada, Renaissance, Surrealism",Surrealism,"{Dada:9},{Neo-Dada:2},{Renaissance:1},{Surrealism:21}",33,Belgrade,1932.0,1970.0,,male,Yugoslavia,"painter, architect",[],[]
