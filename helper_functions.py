@@ -15,7 +15,7 @@ def create_painter_palette(wikiart_artists, art500k_artists, wikiart_art500k_map
     additional_artists_wikiart.rename(columns={'pictures_count':'wikiart_pictures_count'}, inplace=True)
     artists = pd.concat([artists_c, additional_artists_wikiart], ignore_index=True)
     #Further Art500k artists
-    additional_artists_art500k = (art500k_further_selected_df.copy()).rename(columns={'birth_date':'birth_year', 'death_date':'death_year'})
+    additional_artists_art500k = (art500k_further_selected_df.copy()).rename(columns={'birth_date':'birth_year', 'death_date':'death_year', 'ArtMovement': "Art500k_Movements"})
     artists = pd.concat([artists, additional_artists_art500k], ignore_index=True)
     return artists
 
