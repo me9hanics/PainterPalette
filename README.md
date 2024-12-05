@@ -10,7 +10,7 @@
 [mit-license-link]: https://github.com/me9hanics/PainterPalette?tab=MIT-1-ov-file
 
 # PainterPalette
-The most extensive public dataset of painters
+**The most extensive public dataset of painters**
 
 <div align="center">
   <img src="https://github.com/me9hanics/ArtProject/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5" width=70% alt="Painter Network">
