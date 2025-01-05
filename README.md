@@ -19,7 +19,7 @@
 
 <h2><a href="https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv">Download Here (CSV)</a></h2>
 
-If you are looking for connecting the painters into a network, the **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** project **connected painters** based on **co-exhibitions** and analyzed the network afterwards. **[ArtProject](https://github.com/me9hanics/ArtProject/)** has other networks of the painters (and styles) too, e.g. based on **time and place**.
+If you would like to create a network of the painters by connecting the painters in this dataset, definitely check **[painter-network-exploration]()** repository which **connects painters based on time and place**, and the **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** project **connected painters** based on **co-exhibitions** and analyzed the network afterwards. **[ArtProject](https://github.com/me9hanics/ArtProject/)** collects bunch of my works on analysis of various painter networks (and movements, styles) too.
 
 ## Introduction
 
