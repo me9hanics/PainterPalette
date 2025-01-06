@@ -19,11 +19,21 @@
 
 <h2><a href="https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv">Download Here (CSV)</a></h2>
 
-If you would like to create a network of the painters by connecting the painters in this dataset, definitely check **[painter-network-exploration]()** repository which **connects painters based on time and place**, and the **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** project **connected painters** based on **co-exhibitions** and analyzed the network afterwards. **[ArtProject](https://github.com/me9hanics/ArtProject/)** collects bunch of my works on analysis of various painter networks (and movements, styles) too.
+If you are interested in creating a network of painters, by connecting the painters in this dataset, definitely check **[painter-network-exploration](https://github.com/me9hanics/painter-network-exploration?tab=readme-ov-file#painter-network-exploration)** project which **connects painters based on time and location**, and runs an extensive analysis of the network (including detecting communities). This is the latest and most professional work using the dataset. The **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** repo is also relevant, it connects painters based on **co-exhibitions** according to the e-flux website.<br>
+**[ArtProject](https://github.com/me9hanics/ArtProject/)** collects bunch of my works on analysis of various painter networks (and movements, styles), including dynamic network development analysis too.
+
+#### Databases:
+
+<div><details>
+<a href="https://github.com/me9hanics/DataEngineering-SQL/blob/main/Term1/pipeline.sql">This SQL script</a> a relational database of painters, paintings, painting schools, movements and styles, using the data from this <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term1/datasets">folder</a>.
+
+<br> A painter graph database: <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term2#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime">Neo4j KNIME painter coexhibition network</a> project, where the coexhibition network is created from PainterPalette and e-flux coexhibition data, and uploaded to a Neo4j database.
+</details>
+</div>
 
 ## Introduction
 
-The aim of this project is to create a dataset of painters from sources such as WikiArt and Art500k, combining features, substituting missing data of painters via the Wikipedia API and make corrections/additions both automated and manually. After finding mappings between painters in the two sources + Wikidata, the dataset includes around ***10000 painters*** with many attributes.
+The aim of this project is to create a dataset of painters from sources such as WikiArt and Art500k, combining features, substituting missing data of painters via the Wikipedia API and make corrections/additions both automated and manually. After finding mappings between painters in the two sources + Wikidata, and heavy cleaning, the dataset includes around ***10000 painters*** with many attributes.
 
 Currently, the dataset includes ***29 attributes***:
 - Biography data: Nationality/citizenship, name, birth and death years and places, gender
@@ -43,13 +53,15 @@ We have created multiple networks of painters (based on being at the same places
 
 #### Download the latest version (*1.0.2*) [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv)
 - [CSV](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv)
-- [SQL](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.sql)
+- [SQL](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.sql) (just a dump of the CSV)
+  - For a relational database of painters, paintings, painting schools, movements and styles, download this [SQL script](https://github.com/me9hanics/DataEngineering-SQL/blob/main/Term1/pipeline.sql) with the [data folder](https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term1/datasets)
+  - A KNIME pipeline to create a coexhibition network with e-flux data: [Neo4j KNIME painter coexhibition network](https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term2#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime), 
 - [Excel](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.xlsx)
 
 In any case, the final ("compiled") dataset is stored in the *artists.csv* file (raw file here: [raw](https://raw.githubusercontent.com/me9hanics/PainterPalette/main/datasets/artists.csv), often this is better import / look at as it doesn't have the commit ID in the URL so this gives back always the freshest version).<br>
 
 
-#### Some of the first instances in the file:
+#### Some instances in the file:
 
 *Don't forget to scroll*<br>
 | artist | Nationality | citizenship | gender | styles | movement (Wiki) | Movements (Art500k) | birth place | death place | birth year | death_year | FirstYear | LastYear | wikiart_pictures_count | locations | locations_with_years | styles_extended | StylesCount | StylesYears | occupations | PaintingsExhibitedAt | PaintingsExhibitedAtCount | PaintingSchool | Influencedby | Influencedon | Pupils | Teachers | FriendsandCoworkers | Contemporary | ArtMovement | Type |
@@ -64,8 +76,10 @@ In any case, the final ("compiled") dataset is stored in the *artists.csv* file 
 | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Work in progress:
+
 - Find the aliases of painters in Art500k dataset (one painter, multiple instances with different names e.g., Rembrandt and Rembrandt van Rijn); currently the methods are being developed and discussed (the two highest candidate methods are finding aliases through Wikipedia and Wikidata, and using a word embedding to find the very similar names).
 - Broader combination of datasets (handle aliases, add more painters to the final dataset)
+- Re-run Wikidata API SparQL queries, restricting to humans only and other properties
 
 
 ## Visualizations of the dataset
