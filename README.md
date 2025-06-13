@@ -22,6 +22,23 @@
 If you are interested in creating a network of painters, by connecting the painters in this dataset, definitely check **[painter-network-exploration](https://github.com/me9hanics/painter-network-exploration?tab=readme-ov-file#painter-network-exploration)** project which **connects painters based on time and location**, and runs an extensive analysis of the network (including detecting communities). This is the latest and most professional work using the dataset. The **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** repo is also relevant, it connects painters based on **co-exhibitions** according to the e-flux website.<br>
 **[ArtProject](https://github.com/me9hanics/ArtProject/)** collects bunch of my works on analysis of various painter networks (and movements, styles), including dynamic network development analysis too.
 
+## **NetSci 2025**
+
+If you've come here from the NetSci 2025 conference slides, thank you for attending! Here are links to the works:
+
+- [PainterPalette](https://github.com/me9hanics/PainterPalette?tab=readme-ov-file#painterpalette) dataset of 10000 painters (.csv file), download `csv/Excel/SQL` [here](https://github.com/me9hanics/PainterPalette/releases/tag/v1.0.3)
+- Network of 3000 painters: Download `graphml` file from the same [link](https://github.com/me9hanics/PainterPalette/releases/tag/v1.0.3).
+  - The implementation of creating the network based on approximating which pair of artists likely lived at the same place at the same time (for long enough), is available in the [painter-network-exploration](https://github.com/me9hanics/painter-network-exploration?tab=readme-ov-file#painter-network-exploration) repository.
+- [Using Wikidata to gather extensive information](https://github.com/me9hanics/wikidata-SparQL-data-collection) about historical people
+- [NetSci 2025 presentation](https://me9hanics.github.io/projects/NetSci2025_PainterNetwork.pptx)
+- [Coexhibition network of artists](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks?tab=readme-ov-file#coexhibition-network) from web scraped e-flux.com data and PainterPalette - explainging the solution in great depth
+- Collection of art analyses I was involved in [ArtProject](https://github.com/me9hanics/ArtProject)
+- A [SQL script](https://github.com/me9hanics/paintings-SQL-data-warehouse?tab=readme-ov-file#painters-paintings-institutions-and-styles-an-sql-database-with-an-etl-pipeline-and-analytics) creating a database of painters, paintings, styles, movements and institutions (outdated)
+- Graph database: [Neo4j painter coexhibition network storing](https://github.com/me9hanics/Neo4j-KNIME-coexhibition-network-pipeline?tab=readme-ov-file#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime) and analysis, based on a pipeline designed in KNIME
+- [Website](https://me9hanics.github.io/projects/painterpalette.html) under construction 
+
+For any questions on how you could take ideas and use them in your project, just contact me on my personal e-mail.
+
 #### Databases:
 
 <div><details>
