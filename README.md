@@ -22,7 +22,7 @@
 If you are interested in creating a network of painters, by connecting the painters in this dataset, definitely check **[painter-network-exploration](https://github.com/me9hanics/painter-network-exploration?tab=readme-ov-file#painter-network-exploration)** project which **connects painters based on time and location**, and runs an extensive analysis of the network (including detecting communities). This is the latest and most professional work using the dataset. The **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** repo is also relevant, it connects painters based on **co-exhibitions** according to the e-flux website.<br>
 **[ArtProject](https://github.com/me9hanics/ArtProject/)** collects bunch of my works on analysis of various painter networks (and movements, styles), including dynamic network development analysis too.
 
-<h2 style="color: red;">NetSci 2025</h2>
+## ![#f03c15](https://placehold.co/200x50/transparent/F00?text=NetSci+2025)
 
 If you've come here from the NetSci 2025 conference slides, thank you for attending! Here are links to the works:
 
