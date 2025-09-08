@@ -13,18 +13,18 @@
 **The most extensive public dataset of painters**
 
 <div align="center">
-  <img src="https://github.com/me9hanics/ArtProject/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5" width=70% alt="Painter Network">
+  <img src="https://github.com/me9hanics/ArtProjects/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5" width=70% alt="Painter Network">
 </div>
 <hr>
 
 <h2><a href="https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv">Download Here (CSV)</a></h2>
 
 If you are interested in creating a network of painters, by connecting the painters in this dataset, definitely check **[painter-network-exploration](https://github.com/me9hanics/painter-network-exploration?tab=readme-ov-file#painter-network-exploration)** project which **connects painters based on time and location**, and runs an extensive analysis of the network (including detecting communities). This is the latest and most professional work using the dataset. The **[e-flux web scraping](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks)** repo is also relevant, it connects painters based on **co-exhibitions** according to the e-flux website.<br>
-**[ArtProject](https://github.com/me9hanics/ArtProject/)** collects bunch of my works on analysis of various painter networks (and movements, styles), including dynamic network development analysis too.
+**[ArtProjects](https://github.com/me9hanics/ArtProjects/)** collects bunch of my works on analysis of various painter networks (and movements, styles), including dynamic network development analysis too.
 
 ## ![NetSci red text](https://placehold.co/200x50/transparent/F00?text=NetSci+2025)
 
-If you've come here from the NetSci 2025 conference slides, thank you for attending! Here are links to the works:
+If you've come here via the NetSci 2025 conference slides, thank you for attending my talk! Here are links to the works:
 
 - [PainterPalette](https://github.com/me9hanics/PainterPalette?tab=readme-ov-file#painterpalette) dataset of 10000 painters (.csv file), download `csv/Excel/SQL` [here](https://github.com/me9hanics/PainterPalette/releases/tag/v1.0.3)
 - Network of 3000 painters: Download `graphml` file from the same [link](https://github.com/me9hanics/PainterPalette/releases/tag/v1.0.3).
@@ -32,7 +32,7 @@ If you've come here from the NetSci 2025 conference slides, thank you for attend
 - [Using Wikidata to gather extensive information](https://github.com/me9hanics/wikidata-SparQL-data-collection) about historical people
 - [NetSci 2025 presentation](https://me9hanics.github.io/projects/NetSci2025_PainterNetwork.pptx)
 - [Coexhibition network of artists](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks?tab=readme-ov-file#coexhibition-network) from web scraped e-flux.com data and PainterPalette - explainging the solution in great depth
-- Collection of art analyses I was involved in [ArtProject](https://github.com/me9hanics/ArtProject)
+- Collection of art analyses I was involved in [ArtProjects](https://github.com/me9hanics/ArtProjects)
 - A [SQL script](https://github.com/me9hanics/paintings-SQL-data-warehouse?tab=readme-ov-file#painters-paintings-institutions-and-styles-an-sql-database-with-an-etl-pipeline-and-analytics) creating a database of painters, paintings, styles, movements and institutions (outdated)
 - Graph database: [Neo4j painter coexhibition network storing](https://github.com/me9hanics/Neo4j-KNIME-coexhibition-network-pipeline?tab=readme-ov-file#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime) and analysis, based on a pipeline designed in KNIME
 - [Website](https://me9hanics.github.io/projects/painterpalette.html) under construction 
@@ -42,7 +42,8 @@ For any questions on how you could take ideas and use them in your project, just
 #### Databases:
 
 <div><details>
-<a href="https://github.com/me9hanics/DataEngineering-SQL/blob/main/Term1/pipeline.sql">This SQL script</a> a relational database of painters, paintings, painting schools, movements and styles, using the data from this <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term1/datasets">folder</a>.
+<summary>MySQL and Neo4j</summary>
+<a href="https://github.com/me9hanics/DataEngineering-SQL/blob/main/Term1/pipeline.sql">This SQL script</a> constructs a relational database of painters, paintings, painting schools, movements and styles, using the data from this <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term1/datasets">folder</a>.
 
 <br> A painter graph database: <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term2#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime">Neo4j KNIME painter coexhibition network</a> project, where the coexhibition network is created from PainterPalette and e-flux coexhibition data, and uploaded to a Neo4j database.
 </details>
@@ -64,7 +65,7 @@ Currently, the dataset includes ***29 attributes***:
 The dataset is intended to be used for various purposes, including data analysis, machine learning, and visualization projects.<br>
 One long-term goal would be to create a JSON file that contains all combined hierarchically. A level in the structure could be art movement, inside it, are artists with some base bio data, an even lower layer could be the paintings of the painter (even better could be eras of painters in their substructure, and inside them the paintings).
 
-We have created multiple networks of painters (based on being at the same places at the same time + nationality, additionally style similarity, or who influenced whom networks) in another project (see: [ArtProject](https://github.com/me9hanics/ArtProject/)). A network of styles and movements were also created.
+We have created multiple networks of painters (based on being at the same places at the same time + nationality, additionally style similarity, or who influenced whom networks) in another project (see: [ArtProjects](https://github.com/me9hanics/ArtProjects/)). A network of styles and movements were also created.
 
 ### Resulting dataset/file
 
@@ -81,7 +82,7 @@ In any case, the final ("compiled") dataset is stored in the *artists.csv* file 
 #### Some instances in the file:
 
 *Don't forget to scroll*<br>
-| artist | Nationality | citizenship | gender | styles | movement (Wiki) | Movements (Art500k) | birth place | death place | birth year | death_year | FirstYear | LastYear | wikiart_pictures_count | locations | locations_with_years | styles_extended | StylesCount | StylesYears | occupations | PaintingsExhibitedAt | PaintingsExhibitedAtCount | PaintingSchool | Influencedby | Influencedon | Pupils | Teachers | FriendsandCoworkers | Contemporary | ArtMovement | Type |
+| artist name | Nationality | citizenship | gender | styles | movement (Wiki) | Movements (Art500k) | birth place | death place | birth year | death_year | FirstYear | LastYear | wikiart_pictures_count | locations | locations_with_years | styles_extended | StylesCount | StylesYears | occupations | PaintingsExhibitedAt | PaintingsExhibitedAtCount | PaintingSchool | Influencedby | Influencedon | Pupils | Teachers | FriendsandCoworkers | Contemporary | ArtMovement | Type |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Bracha L. Ettinger | French,Jewish,Israeli | Israel | female | New European Painting | New European Painting | {New European Painting:21} | Tel Aviv | NaN | 1948 | NaN | 1991 | 2009 | 21 | [] | [] | {New European Painting:21} | {New European Painting:21} | New European Painting:1991-2009 | philosopher, psychoanalyst, painter, photographer | NaN | NaN | NaN | NaN | NaN | NaN | NaN | Yes | NaN | NaN |
 | Friedrich Schroder-Sonnenstern | German | Germany | male | Art Brut | Outsider art (Art brut) | {Outsider art (Art brut):10} | Sovetsk | Berlin | 1892 | 1982 | 1948 | 1965 | 10 | ['Berlin'] | ['Berlin:1949-1982'] | {Art Brut:10} | {Art Brut:10} | Art Brut:1948-1965 | painter, drawer | NaN | NaN | NaN | NaN | NaN | NaN | NaN | No | NaN | NaN |
@@ -101,25 +102,25 @@ In any case, the final ("compiled") dataset is stored in the *artists.csv* file 
 
 ## Visualizations of the dataset
 
-These were taken from [ArtProject](https://github.com/me9hanics/ArtProject/).
+These were taken from [ArtProjects](https://github.com/me9hanics/ArtProjects/).
 
 <div align="center">
-  <img src="https://github.com/me9hanics/ArtProject/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5" width=90% alt="Time-and-place network" >
+  <img src="https://github.com/me9hanics/ArtProjects/assets/82604073/7690b7fc-b46e-4e27-ae98-7aa8bc046dc5" width=90% alt="Time-and-place network" >
   <br> <b>Figure 1:</b> Painters connected based on time and place (roughly if they painted at the same places at the same time), arranged in birth year order. The color of the nodes represents the movement most common in the painter's styles. An updated, more accurate and larger version of this network is visualized below, but not ordered by time, unlike above.<br>
 </div>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/me9hanics/ArtProject/main/analysis/images/3000_painters_connected_by_locations_communities_2.png" width=90% alt="Large connected network network" >
+  <img src="https://raw.githubusercontent.com/me9hanics/ArtProjects/main/analysis/images/3000_painters_connected_by_locations_communities_2.png" width=90% alt="Large connected network network" >
   <br> <b>Figure 1b:</b> Painters connected based on time and place + post filtering, arranged in birth year order but not ordered by time. Out of >10000 painters in the dataset, around 3000 had enough connections, these were chosen and their network was visualized.<br>
 </div>
 
 <div align="center">
-  <img src="https://github.com/me9hanics/ArtProject/assets/82604073/039688be-16f0-4432-bae2-acba9688914b" width=75% alt="Movements network" >
+  <img src="https://github.com/me9hanics/ArtProjects/assets/82604073/039688be-16f0-4432-bae2-acba9688914b" width=75% alt="Movements network" >
   <br> <b>Figure 2:</b> Network of movements: two movements are connected if it's common enough that painters painted in both styles.
 </div>
 
 <div align="center">
-  <img src="https://github.com/me9hanics/ArtProject/assets/82604073/fe2c11b3-0386-4655-857e-37e0632aa6d9" width=55% alt="Painter influence network" >
+  <img src="https://github.com/me9hanics/ArtProjects/assets/82604073/fe2c11b3-0386-4655-857e-37e0632aa6d9" width=55% alt="Painter influence network" >
   <br> <b>Figure 3:</b> Simple network of some painters based on who influenced whom.
 </div> 
 
@@ -230,7 +231,7 @@ display(style_counts[style_counts['artist']=="Claude Monet"].sort_values(by='cou
 or alternatively, you could use the artists.csv file and group painters and styles together.
 
 
-A lot more functionalities of the dataset are used in [ArtProject](https://github.com/me9hanics/ArtProject/).
+A lot more functionalities of the dataset are used in [ArtProjects](https://github.com/me9hanics/ArtProjects/).
 
 ## License
 This project is licensed under the MIT License, corresponding author: Mihaly Hanics (CEU Vienna, Austria).<br>
