@@ -28,24 +28,24 @@ If you've come here via the NetSci 2025 conference slides, thank you for attendi
 
 - [PainterPalette](https://github.com/me9hanics/PainterPalette?tab=readme-ov-file#painterpalette) dataset of 10000 painters (.csv file), download `csv/Excel/SQL` [here](https://github.com/me9hanics/PainterPalette/releases/tag/v1.0.3)
 - Network of 3000 painters: Download `graphml` file from the same [link](https://github.com/me9hanics/PainterPalette/releases/tag/v1.0.3).
-  - The implementation of creating the network based on approximating which pair of artists likely lived at the same place at the same time (for long enough), is available in the [painter-network-exploration](https://github.com/me9hanics/painter-network-exploration?tab=readme-ov-file#painter-network-exploration) repository.
-- [Using Wikidata to gather extensive information](https://github.com/me9hanics/wikidata-SparQL-data-collection) about historical people
+  - The implementation of creating the network, based on estimating which pair of artists likely lived at the same place at the same time (for long enough), is available in the [painter-network-exploration](https://github.com/me9hanics/painter-network-exploration?tab=readme-ov-file#painter-network-exploration) repository.
+- [Using Wikidata to gather extensive information bout historical people](https://github.com/me9hanics/wikidata-SparQL-data-collection)
 - [NetSci 2025 presentation](https://me9hanics.github.io/projects/NetSci2025_PainterNetwork.pptx)
-- [Coexhibition network of artists](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks?tab=readme-ov-file#coexhibition-network) from web scraped e-flux.com data and PainterPalette - explainging the solution in great depth
+- [Coexhibition network of artists](https://github.com/me9hanics/e-flux_scraping_coexhibition_networks?tab=readme-ov-file#coexhibition-network) using PainterPalette and web scraped data from e-flux.com - technical solution described in great depth
 - Collection of art analyses I was involved in [ArtProjects](https://github.com/me9hanics/ArtProjects)
-- A [SQL script](https://github.com/me9hanics/paintings-SQL-data-warehouse?tab=readme-ov-file#painters-paintings-institutions-and-styles-an-sql-database-with-an-etl-pipeline-and-analytics) creating a database of painters, paintings, styles, movements and institutions (outdated)
-- Graph database: [Neo4j painter coexhibition network storing](https://github.com/me9hanics/Neo4j-KNIME-coexhibition-network-pipeline?tab=readme-ov-file#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime) and analysis, based on a pipeline designed in KNIME
+- A [SQL script](https://github.com/me9hanics/paintings-SQL-data-warehouse?tab=readme-ov-file#painters-paintings-institutions-and-styles-sql-data-warehouse-etl-pipeline-and-analytics) for creating a database of painters, paintings, painting styles, art movements and institutions
+- Graph DB data warehouse: [Painter coexhibition network in Neo4j](https://github.com/me9hanics/Neo4j-KNIME-coexhibition-network-pipeline?tab=readme-ov-file#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime) with analyses. The pipeline is designed in KNIME, data is stored in a Neo4j graph database.
 - [Website](https://me9hanics.github.io/projects/painterpalette.html) under construction 
 
 For any questions on how you could take ideas and use them in your project, just contact me on my personal e-mail.
 
-#### Databases:
+#### Datasets for SQL and NoSQL databases:
 
 <div><details>
-<summary>MySQL and Neo4j</summary>
-<a href="https://github.com/me9hanics/DataEngineering-SQL/blob/main/Term1/pipeline.sql">This SQL script</a> constructs a relational database of painters, paintings, painting schools, movements and styles, using the data from this <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term1/datasets">folder</a>.
+<summary>Relational (MySQL) and graph (Neo4j)</summary>
+<a href="https://github.com/me9hanics/DataEngineering-SQL/blob/main/Term1/pipeline.sql">This SQL script</a> constructs a relational database of painters, paintings, painting schools, movements and styles, using data from <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term1/datasets">this folder</a>.
 
-<br> A painter graph database: <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term2#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime">Neo4j KNIME painter coexhibition network</a> project, where the coexhibition network is created from PainterPalette and e-flux coexhibition data, and uploaded to a Neo4j database.
+<br> A painter data warehouse in a graph database: <a href="https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term2#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime">Neo4j KNIME painter coexhibition network</a> project, where the coexhibition network is created from PainterPalette and e-flux coexhibition data, and uploaded to a Neo4j database.
 </details>
 </div>
 
@@ -72,7 +72,7 @@ We have created multiple networks of painters (based on being at the same places
 #### Download the latest version (*1.0.2*) [**here**](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv)
 - [CSV](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.csv)
 - [SQL](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.sql) (just a dump of the CSV)
-  - For a relational database of painters, paintings, painting schools, movements and styles, download this [SQL script](https://github.com/me9hanics/DataEngineering-SQL/blob/main/Term1/pipeline.sql) with the [data folder](https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term1/datasets)
+  - For a relational dataset of painters, paintings, painting schools, movements and styles, download this [SQL script](https://github.com/me9hanics/DataEngineering-SQL/blob/main/Term1/pipeline.sql) with the [data folder](https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term1/datasets)
   - A KNIME pipeline to create a coexhibition network with e-flux data: [Neo4j KNIME painter coexhibition network](https://github.com/me9hanics/DataEngineering-SQL/tree/main/Term2#painter-coexhibition-network-creation-and-analytics-using-neo4j-and-knime), 
 - [Excel](https://github.com/me9hanics/PainterPalette/releases/download/v1.0.2/PainterPalette.xlsx)
 
